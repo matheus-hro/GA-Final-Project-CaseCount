@@ -1,14 +1,11 @@
 import './Navbar.css';
-
-
-import './Navbar.css';
 import { Link } from 'react-router-dom';
 import logoImg from './count_nobackground1.png'
 
 export default function Navbar(props) {
   return (
     <nav>
-      <section className='nav-container'>
+      <section className='wrap nav-container'>
         <div className='nav-left'>
           <div className='logo-img-container'>
             <img className='logo-img'src={logoImg} alt="" />
