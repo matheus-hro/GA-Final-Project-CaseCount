@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const routes = require('../routes/routes.js')
-const apiRoutes = require('../routes/apiRoutes.js')
+//const routes = require('../routes/routes.js')
+//const apiRoutes = require('../routes/apiRoutes.js')
 
 const Color = require('../models/Color.js')
 const User = require('../models/CaseCountUser.js')
@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" 
-app.use('/api', apiRoutes);
+//app.use('/api', apiRoutes);
 
 //createColor('#FFF744','46hfh46464')
 let email = 'matheus2205msn.com';

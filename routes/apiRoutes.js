@@ -1,13 +1,9 @@
-const express = require('express');
+const express = require('express')
+const userCtrl = require('../controllers/userCtrl.js')
 const router = express.Router();
-//const blogPostCtrl = require('../controllers/blogPost.js');
-//const contactFormCtrl = require('../controllers/contactForm.js');
 
-//router.get('/blog', blogPostCtrl.index);
-
-
-//router.post('/contact', contactFormCtrl.create);
+router.post('/signup', userCtrl.create);
 //router.post('/blog', blogPostCtrl.create);
 
 
-module.exports = router;
+module.exports = router

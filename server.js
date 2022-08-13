@@ -1,12 +1,11 @@
 const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const routes = require('./routes/routes.js')
+const path = require('path')
+const logger = require('morgan')
+require('./config/database.js')
+require('dotenv').config();
+
 const apiRoutes = require('./routes/apiRoutes.js')
 
-require('./config/database.js')
-require('dotenv').config()
 
 const app = express();
 
