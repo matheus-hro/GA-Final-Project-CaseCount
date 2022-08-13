@@ -1,0 +1,13 @@
+.nav-container, .nav-left, .nav-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-container {
+  /* max-width: 1200px; */
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 40px
+}
