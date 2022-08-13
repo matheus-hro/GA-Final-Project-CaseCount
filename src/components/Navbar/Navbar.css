@@ -5,6 +5,7 @@ img {
 .nav-container {
   font-family: 'Montserrat', sans-serif;
   color: #1A072A;
+  padding-top: 10px;
 }
 nav {
   background-color: #F4DB26;
@@ -25,11 +26,10 @@ a {
   gap: 1rem;
 }
 .nav-container {
-  /* max-width: 1200px; */
   width: 80%;
   margin: 0 auto;
-  padding-top: 40px
+  padding-top: 8px;
 }
 .logo-img {
-  height: 60px;
+  height: 50px;
 }
