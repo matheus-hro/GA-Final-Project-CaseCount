@@ -53,8 +53,7 @@ export default class LoginForm extends React.Component {
           <button onClick={this.handleSubmit}>login</button>
          </form>
             <p>{this.state.error}</p>
-      </div>
-        
+      </div>  
     )
   }
 }
