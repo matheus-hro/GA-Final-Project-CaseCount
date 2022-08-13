@@ -7,20 +7,21 @@ import logoImg from './count_nobackground1.png'
 
 export default function Navbar(props) {
   return (
-    <section className='nav-container'>
-      <div className='nav-left'>
-        <div className='logo-img-container'>
-          <img src={logoImg} alt="" />
+    <nav>
+      <section className='nav-container'>
+        <div className='nav-left'>
+          <div className='logo-img-container'>
+            <img className='logo-img'src={logoImg} alt="" />
+          </div>
+          <Link to='/'><h2>casecount</h2></Link>
+          <Link to='/cases'><h4>cases</h4></Link>
         </div>
-        <Link to='/landing'><h2>casecount</h2></Link>
-       
-        <h4>cases</h4>
-      </div>
-      <div className='nav-right'>
-        <h4>log in</h4>
-        <h4>favorites</h4>
-        <h4>cart</h4>
-      </div>
-    </section>
+        <div className='nav-right'>
+          <Link to='/cases'><h4>log in</h4></Link>
+          <Link to='/cases'><h4>favorites</h4></Link>
+          <Link to='/cases'><h4>cart</h4></Link>
+        </div>
+      </section>
+    </nav>
   )
 }

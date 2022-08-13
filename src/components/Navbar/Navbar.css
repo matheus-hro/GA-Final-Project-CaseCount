@@ -1,3 +1,18 @@
+img {
+  max-width: 100%;
+  display: block;
+}
+.nav-container {
+  font-family: 'Montserrat', sans-serif;
+  color: #1A072A;
+}
+nav {
+  background-color: #F4DB26;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .nav-container, .nav-left, .nav-right {
   display: flex;
   flex-direction: row;
@@ -10,4 +25,7 @@
   width: 80%;
   margin: 0 auto;
   padding-top: 40px
+}
+.logo-img {
+  height: 60px;
 }
