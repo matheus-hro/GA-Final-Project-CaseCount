@@ -47,16 +47,16 @@ export default class SignupForm extends Component {
         </div>
          <form action="">
            <label><span>Name</span>
-            <input name="name" value={this.state.name} onChange={this.handleChange}/>
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required/>
            </label>
            <label><span>Email</span>
-            <input name="email" value={this.state.email} onChange={this.handleChange}/>
+            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required/>
            </label>
            <label><span>Password</span>
-            <input name="password" value={this.state.password} onChange={this.handleChange}/>
+            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
            </label>
            <label><span>Confirm</span>
-            <input name="confirm" value={this.state.confirm} onChange={this.handleChange}/>
+            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required/>
            </label>
           <button type="submit" disabled={disable} onClick={this.handleSubmit}>login</button>
          </form>
