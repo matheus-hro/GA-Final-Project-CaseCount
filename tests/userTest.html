@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <title>casecount</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+        <p>Hello, this is a user test.</p>
+        <button id="signup">Sign up</button>
+        <button id="signin">Sign in</button>
+    </div>
+  </body>
+  <script>
+     async function fetchNewUser(name, email, password){
+      const user = {name, email, password}
+      try {
+          //let jwt = localStorage.getItem('token')
+          let fetchResponse = await fetch("/api/signup", {
+              method: "POST",
+              headers: {"Content-Type": "application/json",},
+              body: JSON.stringify(user)
+          })
+          if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
+          let token = await fetchResponse.json();
+          localStorage.setItem('token', token);
+          const userDoc = JSON.parse(atob(token.split('.')[1])); // 5. Decode the token + put user document into state
+          //this.props.setUserInState(userDoc.user)
+          window.alert(`Signup successful! Your user id is ${userDoc.user._id}`)
+          return {token, userDoc}
+      }catch(err){
+          console.log(err)
+      }
+    }
+
+    async function fetchUser(email, password){
+      const user = {email, password}
+      try {
+          //let jwt = localStorage.getItem('token')
+          let fetchResponse = await fetch("/api/signin", {
+              method: "POST",
+              headers: {"Content-Type": "application/json",},
+              body: JSON.stringify(user)
+          })
+          if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
+          let token = await fetchResponse.json();
+          localStorage.setItem('token', token);
+          const userDoc = JSON.parse(atob(token.split('.')[1])); // 5. Decode the token + put user document into state
+          //this.props.setUserInState(userDoc.user)
+          window.alert("Login successful!")
+          return {token, userDoc}
+      }catch(err){
+          console.log(err)
+      }
+    }
+
+    const signupBtn = document.getElementById('signup');
+    signupBtn.addEventListener('click', ()=>{
+      let name = prompt("Please enter your name", "George");
+      let email = prompt("Please enter a valid email address");
+      let password = prompt("Please enter a password longer than 6 digits");
+      fetchNewUser(name, email, password)
+    })
+
+    const signinBtn = document.getElementById('signin');
+    signinBtn.addEventListener('click', ()=>{
+      let email = prompt("Please your email address");
+      let password = prompt("Please enter your password");
+      fetchUser(email, password)
+    })
+    
+  </script>
+</html>
