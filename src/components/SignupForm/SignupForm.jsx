@@ -45,7 +45,7 @@ export default class SignupForm extends Component {
           <li>log in</li>
           <li>sign up</li>
         </ul>
-         <form action="">
+         <form className="form-signup" action="">
            <label><span>Name</span>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required/>
            </label>

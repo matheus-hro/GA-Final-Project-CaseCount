@@ -10,7 +10,7 @@ export default class LoginPage extends React.Component {
   }
   render() {
     return(
-      <div className='wrap login-form'>
+      <div className='login-form'>
        {this.state.userRegistered ? (
          <LoginForm />
        ) : (
