@@ -1,22 +1,19 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import './LoginPage.css'
 import LoginForm from "../../components/LoginForm/LoginForm";
 import SignupForm from "../../components/SignupForm/SignupForm";
 
 
-export default class LoginPage extends React.Component {
-  state= {
-    userRegistered: true
-  }
-  render() {
-    return(
-      <div className='login-form'>
-       {this.state.userRegistered ? (
-         <LoginForm />
-       ) : (
+export default function LoginPage(props) {
+  const [userRegistered, setUserRegistered] = useState(true)
+  return(
+    <div className='login-form'>
+      {userRegistered ? (
+        <LoginForm />
+      ) : (
         <SignupForm />
-       )}
-      </div>
-    )
-  }
+      )}
+    </div>
+  )
+  
 }
