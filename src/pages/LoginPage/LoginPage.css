@@ -1,0 +1,14 @@
+
+.login-form {
+  background-color: #F4DB26;
+  max-width: 500px;
+    width: 90vw;
+    min-height: 500px;
+    height: 80vh;
+    border-radius: 15px;
+    /* margin: 20px; */
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 60px;
+
+}
