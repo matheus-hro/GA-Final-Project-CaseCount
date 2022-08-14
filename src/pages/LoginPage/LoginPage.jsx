@@ -6,16 +6,25 @@ import SignupForm from "../../components/SignupForm/SignupForm";
 
 export default class LoginPage extends React.Component {
   state= {
-    userRegistered: true
+    currentTab: 1
+  }
+  updateCurrentTabTo = (incoming_tab) => {
+    this.setState({
+      currentTab: incoming_tab,
+    })
   }
   render() {
     return(
       <div className='login-form'>
-       {this.state.userRegistered ? (
+         <ul className='auth-tabs'>
+          <li onClick={()=> this.updateCurrentTabTo(1)}>log in</li>
+          <li onClick={()=> this.updateCurrentTabTo(2)}>sign up</li>
+        </ul>
+       {this.state.currentTab === 1 ? 
          <LoginForm />
-       ) : (
+        : 
         <SignupForm />
-       )}
+       }
       </div>
     )
   }

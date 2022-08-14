@@ -21,7 +21,7 @@ a:hover::after {
   position: absolute;
   width: 100%;
   bottom: 20px;
-  border: 2px solid black;
+  border: 2px solid #1A072A;
 }
 .wrap {
   max-width: 1200px;

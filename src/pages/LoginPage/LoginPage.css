@@ -1,4 +1,13 @@
 
+ol, ul, menu {
+  list-style: none;
+}
+.auth-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .login-form {
   background-color: #F4DB26;
   max-width: 500px;
