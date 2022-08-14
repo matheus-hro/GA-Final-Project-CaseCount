@@ -55,7 +55,7 @@ export default class SignupForm extends Component {
            <label><span>Confirm</span>
             <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required/>
            </label>
-          <button type="submit"  onClick={this.handleSubmit}>login</button>
+          <button type="submit"  onClick={this.handleSubmit}>sign up</button>
          </form>
             <p>{this.state.error}</p>
       </div>  

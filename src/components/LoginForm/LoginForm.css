@@ -28,3 +28,6 @@ form button {
   padding: 8px 80px;
   border-radius: 20px;
 }
+.activeTab {
+  border-bottom: 5px solid #1A072A;
+}

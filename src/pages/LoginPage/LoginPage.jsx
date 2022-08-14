@@ -16,9 +16,9 @@ export default class LoginPage extends React.Component {
   render() {
     return(
       <div className='login-form'>
-        <div className='login-form-container'></div>
+        <div className='login-form-container'>
          <ul className='auth-tabs'>
-          <li onClick={()=> this.updateCurrentTabTo(1)}>log in</li>
+          <li  className="activeTab" onClick={()=> this.updateCurrentTabTo(1)}>log in</li>
           <li onClick={()=> this.updateCurrentTabTo(2)}>sign up</li>
         </ul>
        {this.state.currentTab === 1 ? 
@@ -26,6 +26,7 @@ export default class LoginPage extends React.Component {
         : 
         <SignupForm />
        }
+       </div>
       </div>
     )
   }
