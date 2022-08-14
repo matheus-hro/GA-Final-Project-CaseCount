@@ -5,9 +5,15 @@ ol, ul, menu {
 .auth-tabs {
   display: flex;
   flex-direction: row;
+  
   justify-content: center;
+  gap: 24px;
 }
-
+.auth-tabs li {
+  font-size: 32px;
+  color: #1A072A;
+  font-family: 'Montserrat', sans-serif;
+}
 .login-form {
   background-color: #F4DB26;
   max-width: 500px;

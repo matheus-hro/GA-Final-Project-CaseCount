@@ -1,14 +1,26 @@
-ol, ul, menu {
-  list-style: none;
-}
-.auth-tabs {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+
 .form-login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.form-login label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold
+}
+
+form input {
+  border: none;
+    border-radius: 20px;
+}
+
+form button {
+  color: #F4DB26;
+  background-color: #1A072A;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }

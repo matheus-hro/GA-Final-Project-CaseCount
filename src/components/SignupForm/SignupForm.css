@@ -1,14 +1,11 @@
-ol, ul, menu {
-  list-style: none;
-}
-.auth-tabs {
-  display: flex;
-  flex: row;
-  justify-content: center;
-}
+
 .form-signup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.form-signup label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold
 }
