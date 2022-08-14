@@ -40,7 +40,7 @@ export default class LoginForm extends React.Component {
     return (
       <div className='form-container'>
        
-         <form className="form-login" action="">
+         <form className="form-signup" action="">
            <label><span>Email</span>
             <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required/>
            </label>

@@ -1,19 +1,21 @@
 
-.form-login {
+.form-signup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
 }
 
-.form-login label {
+.form-signup label {
   font-family: 'Montserrat', sans-serif;
-  font-weight: bold
+  font-size: 18px;
 }
 
 form input {
   border: none;
-    border-radius: 20px;
+  border-radius: 20px;
+  padding: 6px 8px;
 }
 
 form button {
@@ -23,4 +25,6 @@ form button {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  padding: 8px 80px;
+  border-radius: 20px;
 }

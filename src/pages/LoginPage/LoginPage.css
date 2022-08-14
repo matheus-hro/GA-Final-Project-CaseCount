@@ -5,7 +5,7 @@ ol, ul, menu {
 .auth-tabs {
   display: flex;
   flex-direction: row;
-  
+
   justify-content: center;
   gap: 24px;
 }
@@ -25,5 +25,8 @@ ol, ul, menu {
     overflow: hidden;
     margin: 0 auto;
     margin-top: 60px;
+}
 
+.login-form-container {
+  padding-top: 20px
 }
