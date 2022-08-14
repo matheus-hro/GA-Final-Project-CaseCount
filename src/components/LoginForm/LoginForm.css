@@ -1,0 +1,8 @@
+ol, ul, menu {
+  list-style: none;
+}
+.auth-tabs {
+  display: flex;
+  flex: row;
+  justify-content: center;
+}

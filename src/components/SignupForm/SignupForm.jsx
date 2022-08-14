@@ -41,10 +41,10 @@ export default class SignupForm extends Component {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div>
-        <div>
-          <h1>log in</h1>
-          <h1>sign up</h1>
-        </div>
+         <ul className='auth-tabs'>
+          <li>log in</li>
+          <li>sign up</li>
+        </ul>
          <form action="">
            <label><span>Name</span>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required/>

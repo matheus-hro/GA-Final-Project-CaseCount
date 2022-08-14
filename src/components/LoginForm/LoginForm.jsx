@@ -38,11 +38,11 @@ export default class LoginForm extends React.Component {
 }
   render() {
     return (
-      <div>
-        <div>
-          <h1>log in</h1>
-          <h1>sign up</h1>
-        </div>
+      <div className='form-container'>
+        <ul>
+          <li>log in</li>
+          <li>sign up</li>
+        </ul>
          <form action="">
            <label><span>Email</span>
             <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required/>
