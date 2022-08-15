@@ -10,12 +10,13 @@
     /* justify-content: space-between; */
     flex-wrap: wrap;
     gap: 6px;
+    padding-bottom: 20px;
   }
   .picker-container .picker-card {
     width: 100%;
     max-width: 60px;
     /* margin: 10px 0; */
-    text-align: center;
+    
   }
   .picker-container .picker-card .box {
     /* width: 100%;
@@ -25,6 +26,11 @@
     border-radius: 12px;
     cursor: pointer;
   }
+  .picker-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 8px
+  }
   .randomize-btn {
     color: #F4DB26;
     background-color: #1A072A;
@@ -32,16 +38,16 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    padding: 8px 75px;
+    padding: 8px 20px;
     border-radius: 20px;
   }
   .reset-btn {
-    color: ##1A072A;
+    color: #1A072A;
     background-color: white;
-    border: ##1A072A;
+    border: #1A072A;
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    padding: 8px 75px;
+    padding: 8px 20px;
     border-radius: 20px;
   }

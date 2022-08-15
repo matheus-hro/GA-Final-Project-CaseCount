@@ -20,9 +20,11 @@ export default class CanvasPage extends React.Component {
           <Picker />
           <PhonePreview />
           <PhoneDropDown />
+          <div>
+          <AddToCartBtn />
+          <SaveBtn />
+        </div>
           </div> 
-        <AddToCartBtn />
-        <SaveBtn />
       </div>
       
     )

@@ -21,8 +21,11 @@ export default function Picker() {
         </div>
        ))}
     </div>
-    <button className='randomize-btn'>randomize</button>
-    <button className='reset-btn'>reset</button>
+    <div className='picker-btns'>
+      <button className='randomize-btn'>randomize</button>
+      <button className='reset-btn'>reset</button>
+    </div>
+    
 
     </article>
    
