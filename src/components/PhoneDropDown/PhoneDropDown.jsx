@@ -3,7 +3,7 @@ import './PhoneDropDown.css'
 
 export default function PhoneDropdown() {
   return (
-    <Dropdown>
+    <Dropdown className='dropdown'>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
         Dropdown Button
       </Dropdown.Toggle>

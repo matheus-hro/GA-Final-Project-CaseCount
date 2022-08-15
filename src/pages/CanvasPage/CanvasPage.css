@@ -3,3 +3,8 @@
   flex-direction: row;
   padding-top: 60px;
 }
+.add-save-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}

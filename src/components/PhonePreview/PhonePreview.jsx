@@ -4,7 +4,7 @@ import './PhonePreview.css';
 export default function PhonePreview() {
 
   return (
-    <article>
+    <article className="phone-preview">
       <div>
         <img src="/images/case.png" alt="" />
       </div>

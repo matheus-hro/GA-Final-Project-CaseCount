@@ -19,12 +19,16 @@ export default class CanvasPage extends React.Component {
         <div className=' wrap canvas-main'>
           <Picker />
           <PhonePreview />
-          <PhoneDropDown />
           <div>
-          <AddToCartBtn />
-          <SaveBtn />
-        </div>
-          </div> 
+            <PhoneDropDown />
+            <div className='add-save-btns'>
+                <AddToCartBtn />
+                <SaveBtn />
+            </div>
+          </div>
+         
+      
+        </div> 
       </div>
       
     )

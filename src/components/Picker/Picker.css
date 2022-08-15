@@ -29,7 +29,7 @@
   .picker-btns {
     display: flex;
     flex-direction: row;
-    gap: 8px
+    gap: 8px;
   }
   .randomize-btn {
     color: #F4DB26;
@@ -44,7 +44,7 @@
   .reset-btn {
     color: #1A072A;
     background-color: white;
-    border: #1A072A;
+    /* border: #1A072A; */
     font: inherit;
     cursor: pointer;
     outline: inherit;
