@@ -25,7 +25,7 @@ form button {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  padding: 8px 80px;
+  padding: 8px 75px;
   border-radius: 20px;
 }
 .activeTab {
