@@ -13,6 +13,7 @@ ol, ul, menu {
   font-size: 32px;
   color: #1A072A;
   font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
 }
 .login-form {
   background-color: #F4DB26;

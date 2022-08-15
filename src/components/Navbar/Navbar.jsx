@@ -14,9 +14,9 @@ export default function Navbar(props) {
           <Link to='/cases'><h4>cases</h4></Link>
         </div>
         <div className='nav-right'>
-          <Link to='/cases'><h4>log in</h4></Link>
-          <Link to='/cases'><h4>favorites</h4></Link>
-          <Link to='/cases'><h4>cart</h4></Link>
+          <Link to='/login'><h4>log in</h4></Link>
+          <Link to='/favorites'><h4>favorites</h4></Link>
+          <Link to='/cart'><h4>cart</h4></Link>
         </div>
       </section>
     </nav>

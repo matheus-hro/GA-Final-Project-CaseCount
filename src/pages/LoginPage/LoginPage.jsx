@@ -6,8 +6,7 @@ import SignupForm from "../../components/SignupForm/SignupForm";
 
 export default class LoginPage extends React.Component {
   state= {
-    // currentTab: 1,
-    // isActive: true
+    
     activeTab: 'login'
   }
  
@@ -16,10 +15,10 @@ export default class LoginPage extends React.Component {
       <div className='login-form'>
         <div className='login-form-container'>
          <ul className='auth-tabs'>
-          <li  id="loginTab" onClick={()=>this.setState({activeTab:"login"})} {this.state.activeTab==="login" ? className="activeTab" : null}>log in</li>
-          <li  id="signupTab" onClick={()=>this.setState({activeTab:"signup"})} {this.state.activeTab==="signup" ? className="activeTab" : null}>sign up</li>
+          <li  className={this.state.activeTab==="login" ? "activeTab" : null} onClick={()=>this.setState({activeTab:"login"})} >log in</li>
+          <li  className={this.state.activeTab==="signup" ? "activeTab" : null} onClick={()=>this.setState({activeTab:"signup"})} c>sign up</li>
         </ul>
-       {this.state.activeTab === "login" ? 
+       {this.state.activeTab === 'login' ? 
          <LoginForm />
         : 
         <SignupForm />
