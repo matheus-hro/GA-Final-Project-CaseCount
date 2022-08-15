@@ -16,10 +16,10 @@ export default class LoginPage extends React.Component {
       <div className='login-form'>
         <div className='login-form-container'>
          <ul className='auth-tabs'>
-          <li  id="loginTab" onClick={()=>this.setState({activeTab:"login"})} {this.state.activeTab==="login" ? className="activeTab": }>log in</li>
-          <li  id="signupTab" onClick={()=>this.setState({activeTab:"signup"})} {this.state.activeTab==="signup" ? className="activeTab": }>sign up</li>
+          <li  id="loginTab" onClick={()=>this.setState({activeTab:"login"})} {this.state.activeTab==="login" ? className="activeTab" : null}>log in</li>
+          <li  id="signupTab" onClick={()=>this.setState({activeTab:"signup"})} {this.state.activeTab==="signup" ? className="activeTab" : null}>sign up</li>
         </ul>
-       {this.state.currentTab === 1 ? 
+       {this.state.activeTab === "login" ? 
          <LoginForm />
         : 
         <SignupForm />
