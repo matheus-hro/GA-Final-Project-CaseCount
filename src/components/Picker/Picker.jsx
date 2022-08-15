@@ -3,12 +3,14 @@ import './Picker.css';
 
 export default function Picker() {
 
-  const colors = ["#B81731", "#FF632C", "#FFCC33", "#009956", "#2A3778", "#007995"]
+  const colors = ["#B81731", "#FF632C", "#FFCC33", "#009956", "#2A3778", "#007995", "#EAD1CB", "#B9A8CA"]
 
   return (
+    <article className='pickers-panel'>
+       <h4>Colors</h4>
     <div className='picker-container'>
        {colors.map((color,index) => (
-        <div key={index} className='card'>
+        <div key={index} className='picker-card'>
           <div 
              className="box"
              style={{
@@ -19,6 +21,11 @@ export default function Picker() {
         </div>
        ))}
     </div>
+    <button>randomize</button>
+    <button>reset</button>
+
+    </article>
+   
   )
 }
 
