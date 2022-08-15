@@ -17,7 +17,7 @@
     <div id="root">
         <p>Hello, this is a user test.</p>
         <button id="signup">Sign up</button>
-        <button id="signin">Sign in</button>
+        <button id="login">Sign in</button>
     </div>
   </body>
   <script>
@@ -46,7 +46,7 @@
       const user = {email, password}
       try {
           //let jwt = localStorage.getItem('token')
-          let fetchResponse = await fetch("/api/signin", {
+          let fetchResponse = await fetch("/api/login", {
               method: "POST",
               headers: {"Content-Type": "application/json",},
               body: JSON.stringify(user)
@@ -71,8 +71,8 @@
       fetchNewUser(name, email, password)
     })
 
-    const signinBtn = document.getElementById('signin');
-    signinBtn.addEventListener('click', ()=>{
+    const loginBtn = document.getElementById('login');
+    loginBtn.addEventListener('click', ()=>{
       let email = prompt("Please your email address");
       let password = prompt("Please enter your password");
       fetchUser(email, password)

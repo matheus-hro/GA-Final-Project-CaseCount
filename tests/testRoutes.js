@@ -21,7 +21,7 @@ router.get('/user', function (req, res, next) {
   })
 })
 
-router.get('signin', function (req, res, next) {
+router.get('login', function (req, res, next) {
   var options = {
     root: path.join(__dirname),
     dotfiles: 'deny',
@@ -30,7 +30,7 @@ router.get('signin', function (req, res, next) {
       'x-sent': true
     }
   }
-  var fileName = 'signinTest.html'
+  var fileName = 'loginTest.html'
   res.sendFile(fileName, options, function (err) {
     if (err) {
       next(err)

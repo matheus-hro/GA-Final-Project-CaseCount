@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import './LoginForm.css';
+import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm (props) {
   const [statusMessage, setStatusMessage] = useState("");
+  const navigate = useNavigate();
 
   async function fetchUser(e){
       e.preventDefault();
@@ -13,7 +15,7 @@ export default function LoginForm (props) {
       console.log(user)
       try {
           //let jwt = localStorage.getItem('token')
-          let fetchResponse = await fetch("/api/signin", {
+          let fetchResponse = await fetch("/api/login", {
               method: "POST",
               headers: {"Content-Type": "application/json",},
               body: JSON.stringify(user)
@@ -21,9 +23,9 @@ export default function LoginForm (props) {
           if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
           let token = await fetchResponse.json();
           localStorage.setItem('token', token);
-          //const userDoc = JSON.parse(atob(token.split('.')[1])); // 5. Decode the token + put user document into state
-          //this.props.setUserInState(userDoc.user)
-          setStatusMessage("Signed in!")
+          setStatusMessage("Signed in!");
+          navigate('/', {replace: true});
+          
       }catch(err){
           console.log("Error when fetching user: ", err)
           setStatusMessage("Failed! Please try again.")

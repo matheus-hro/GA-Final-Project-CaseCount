@@ -49,6 +49,6 @@ async function destroy (req, res) {
 module.exports = {
    create,
    authenticate,
-   signin,
+   login,
    destroy
 }
