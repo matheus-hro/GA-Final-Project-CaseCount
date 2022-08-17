@@ -1,18 +1,16 @@
 import './App.css';
-import React, {useState, useEffect, useSearchParams} from 'react'
-import {Route, Routes, Navigate, useLocation, useParams} from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import React, {useState, useEffect} from 'react'
+import {Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage.jsx';
+import LoginPage from './pages/LoginPage/LoginPage.jsx';
+import LogoutPage from './pages/LogoutPage/LogoutPage.jsx';
 
 
-function App(props) {
+function App() {
 
   const [userState, setUserState] = useState(null)
   const location = useLocation()
-  //const [searchParams, setSearchParams] = useSearchParams();
-  let {signout} = useParams();
-  console.log(signout)
-
+  
   useEffect(() => {
     let token = localStorage.getItem('token');
     console.log("token in useeffect: ", token)
@@ -24,6 +22,8 @@ function App(props) {
       } else { 
         setUserState(payload.user)
       }
+    }else{
+      setUserState(null)
     }
   }, [location]);
   
@@ -32,6 +32,7 @@ function App(props) {
       <Routes >
       <Route path='/' element={<HomePage user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
+      <Route path="/logout" element={<LogoutPage/>}/>
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
     </div>

@@ -14,7 +14,6 @@ export default function LoginForm (props) {
       };
       console.log(user)
       try {
-          //let jwt = localStorage.getItem('token')
           let fetchResponse = await fetch("/api/login", {
               method: "POST",
               headers: {"Content-Type": "application/json",},
@@ -24,7 +23,7 @@ export default function LoginForm (props) {
           let token = await fetchResponse.json();
           localStorage.setItem('token', token);
           setStatusMessage("Signed in!");
-          navigate('/', {replace: true});
+          navigate(-1, {replace: true});
           
       }catch(err){
           console.log("Error when fetching user: ", err)
