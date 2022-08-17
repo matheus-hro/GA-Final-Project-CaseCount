@@ -1,3 +1,4 @@
+import ColourPicker from '../Picker/Picker';
 import './Home.css';
 
 export default function Home(props) {
@@ -21,8 +22,8 @@ export default function Home(props) {
           </div>
           <h4>Pixel 4</h4>
         </div>
-
       </article>
+    
     </section>
   )
 }

@@ -4,6 +4,7 @@ import {Route, Routes, Navigate, useLocation} from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import LogoutPage from './pages/LogoutPage/LogoutPage.jsx';
+import CanvasPage from './pages/CanvasPage/CanvasPage';
 
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
       <Route path='/' element={<HomePage user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
       <Route path="/logout" element={<LogoutPage/>}/>
+      <Route path='/canvas' element={<CanvasPage />}/>
+
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
     </div>
