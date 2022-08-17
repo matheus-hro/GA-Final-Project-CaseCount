@@ -31,6 +31,11 @@
     flex-direction: row;
     gap: 8px;
   }
+  button {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  }
   .randomize-btn {
     color: #F4DB26;
     background-color: #1A072A;

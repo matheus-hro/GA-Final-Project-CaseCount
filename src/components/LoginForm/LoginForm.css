@@ -21,6 +21,9 @@ form input {
 form button {
   color: #F4DB26;
   background-color: #1A072A;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
 	border: none;
 	font: inherit;
 	cursor: pointer;
