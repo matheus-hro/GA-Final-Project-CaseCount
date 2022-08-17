@@ -25,7 +25,7 @@ async function create (req, res) {
    }
 }
 
-async function signin (req, res) {
+async function login (req, res) {
    try {
       const user = await User.findOne({ email: req.body.email });
       if (!(await bcrypt.compare(req.body.password, user.password))) throw new Error();
@@ -49,6 +49,6 @@ async function destroy (req, res) {
 module.exports = {
    create,
    authenticate,
-   signin,
+   login,
    destroy
 }

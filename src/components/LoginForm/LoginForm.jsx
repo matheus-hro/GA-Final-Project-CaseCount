@@ -1,59 +1,47 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import './LoginForm.css';
+import { useNavigate } from 'react-router-dom'
 
-export default class LoginForm extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    error: ''
-  }
+export default function LoginForm (props) {
+  const [statusMessage, setStatusMessage] = useState("");
+  const navigate = useNavigate();
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-      error: ''
-    })
-  }
-  handleSubmit = async (evt) => {
-    evt.preventDefault();
-    try {
-      // 1. POST our new user info to the server
-      const fetchResponse = await fetch('/api/users/login', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: this.state.email, password: this.state.password, })
-      })
+  async function handleSubmit(e){
+      e.preventDefault();
+      const user = {
+        email: e.target.form.email.value,
+        password: e.target.form.password.value,
+      };
+      try {
+          let fetchResponse = await fetch("/api/login", {
+              method: "POST",
+              headers: {"Content-Type": "application/json",},
+              body: JSON.stringify(user)
+          })
+          if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
+          let token = await fetchResponse.json();
+          localStorage.setItem('token', token);
+          setStatusMessage("Signed in!");
+          navigate(-1, {replace: true});
+          
+      }catch(err){
+          console.log("Error when fetching user: ", err)
+          setStatusMessage("Failed! Please try again.")
+      }
+    }
 
-      // 2. Check "fetchResponse.ok". False means status code was 4xx from the server/controller action
-      if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
-
-      let token = await fetchResponse.json() // 3. decode fetch response: get jwt token from srv
-      localStorage.setItem('token', token);  // 4. Stick token into localStorage
-
-      const userDoc = JSON.parse(atob(token.split('.')[1])).user; // 5. Decode the token + put user document into state
-      this.props.setUserInState(userDoc)
-
-    } catch (err) {
-  }
-}
-  render() {
-    return (
-      <div className='form-container'>
-        <ul>
-          <li>log in</li>
-          <li>sign up</li>
-        </ul>
-         <form className="form-login" action="">
-           <label><span>Email</span>
-            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required/>
-           </label>
-           <label><span>Password</span>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
-           </label>
-          <button onClick={this.handleSubmit}>login</button>
-         </form>
-            <p>{this.state.error}</p>
-      </div>  
-    )
-  }
+  return (
+    <div className='form-container'>
+      <form className="form-signup" action="">
+        <label><span>Email</span>
+          <input type="email" name="email" required/>
+        </label>
+        <label><span>Password</span>
+          <input type='password' name="password" required/>
+        </label>
+        <button type="submit" onClick={handleSubmit}>Log in</button>
+      </form>
+      <p>{statusMessage}</p>
+    </div>  
+  )
 }

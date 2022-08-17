@@ -1,67 +1,53 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import './SignupForm.css';
 
-export default class SignupForm extends Component {
-  state= {
-    name:'',
-    email:'',
-    confirm:'',
-    error: ''
-  };
+export default function SignupForm(props){
+  const [statusMessage, setStatusMessage] = useState("");
 
-  handleChange= (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-      error: ''
-    })
-  }
-  handleSubmit= async(e)=> {
+  async function handleSubmit(e){
     e.preventDefault();
-      try {
-        const fetchResponse = await fetch('/api/users/signup', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({name: this.state.name, email:this.state.email, password:this.state.password})
-        })
-        console.log(fetchResponse);
-        if (!fetchResponse.ok) this.setState({error: "We are broken"});
-      
-        let token = await fetchResponse.json()
-        console.log(token);
-        localStorage.setItem('token', token);
-        
-        const userDoc = JSON.parse(atob(token.split('.')[1])).user;
-        console.log(userDoc);
-        this.props.setUserInState(userDoc)
-      } catch(err) {
-
-      }
+    const user = {
+        name: e.target.form.name.value,
+        email: e.target.form.email.value,
+        password: e.target.form.password.value,
+    };
+    try {
+    const fetchResponse = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+    })
+    if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
+    
+    const signupStatus = await fetchResponse.json()
+    console.log(signupStatus.message);
+    //setStatusMessage(signupStatus.message);    
+    } catch(err) {
+        console.log("Error when fetching user: ", err)
+        setStatusMessage("Failed! Please try again.")
+    }
   }
-  render() {
-    const disable = this.state.password !== this.state.confirm;
+
+  //need to add password and complete form validation
     return (
       <div>
-         <ul className='auth-tabs'>
-          <li>log in</li>
-          <li>sign up</li>
-        </ul>
-         <form className="form-signup" action="">
-           <label><span>Name</span>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required/>
-           </label>
-           <label><span>Email</span>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required/>
-           </label>
-           <label><span>Password</span>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
-           </label>
-           <label><span>Confirm</span>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required/>
-           </label>
-          <button type="submit" disabled={disable} onClick={this.handleSubmit}>login</button>
-         </form>
-            <p>{this.state.error}</p>
+        <form className="form-signup" action="">
+            <label><span>Name</span>
+                <input type="text" name="name" required/>
+            </label>
+            <label><span>Email</span>
+                <input type="email" name="email" required/>
+            </label>
+            <label><span>Password</span>
+                <input type="password" name="password" required/>
+            </label>
+            <label><span>Confirm password</span>
+                <input type="password" name="confirm" required/>
+            </label>
+            <button type="submit" onClick={handleSubmit}>Sign up</button>
+        </form>
+        <p>{statusMessage}</p>
       </div>  
     )
-}
+
 }
