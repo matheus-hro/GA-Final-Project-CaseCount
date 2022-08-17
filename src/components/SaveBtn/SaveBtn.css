@@ -1,0 +1,10 @@
+.save-btn {
+  color: #F4DB26;
+  background-color: #1A072A;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  padding: 8px 20px;
+  border-radius: 20px;
+}

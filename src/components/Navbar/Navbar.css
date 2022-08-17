@@ -10,18 +10,19 @@ img {
 nav {
   background-color: #F4DB26;
 }
-a {
+a, #navlink {
   text-decoration: none;
-  color: inherit;
+  color: #1A072A !important;
   position: relative;
 }
 
-a:hover::after {
+#navlink:hover::after {
   content: "";
   position: absolute;
+  color: #1A072A !important;
   width: 100%;
-  bottom: 20px;
-  border: 2px solid #1A072A;
+  bottom: 10px;
+  border: 2px solid #1A072A !important;
 }
 .wrap {
   max-width: 1200px;

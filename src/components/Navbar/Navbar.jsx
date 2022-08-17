@@ -11,8 +11,8 @@ export default function Navbar(props) {
           <div className='logo-img-container'>
             <img className='logo-img'src={logoImg} alt="" />
           </div>
-          <Link to='/'><h2>casecount</h2></Link>
-          <Link to='/cases'><h4>cases</h4></Link>
+          <Link to='/' id="navlink"><h2>casecount</h2></Link>
+          <Link to='/cases' id="navlink"><h4>cases</h4></Link>
         </div>
         <div className='nav-right'>
           {props.user ? <span>Welcome {props.user.name}!</span> : ""}
