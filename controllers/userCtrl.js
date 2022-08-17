@@ -16,12 +16,12 @@ async function authenticate (req, res) {
 async function create (req, res) {
    let user = req.body;
    try {
-       user = await User.create(user)
-       const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: '48h' });
-       res.status(200).json(token)
+      user = await User.create(user)
+      
+      res.status(200).json({didRegister:true, message:'Success! You can now log in.'})
    }catch(err){
-       console.log("error is: ", err)
-       res.status(400).json('Unable to sign in!');
+      console.log("error is: ", err)
+      res.status(400).json({didRegister:false, message:'Unable to create user!'});
    }
 }
 
