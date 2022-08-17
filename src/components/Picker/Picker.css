@@ -1,4 +1,7 @@
 
+  .picker-title {
+    font-size: 24px;
+  }
   .pickers-panel {
     display: flex;
     flex-direction: column;
@@ -33,14 +36,13 @@
   }
   button {
   text-transform: uppercase;
-  font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   }
   .randomize-btn {
     color: #F4DB26;
     background-color: #1A072A;
     border: none;
-    
+    font-weight: 700;
     cursor: pointer;
     outline: inherit;
     padding: 8px 20px;
@@ -50,7 +52,7 @@
     color: #1A072A;
     background-color: white;
     /* border: #1A072A; */
-    font: inherit;
+    font-weight: 700;
     cursor: pointer;
     outline: inherit;
     padding: 8px 20px;

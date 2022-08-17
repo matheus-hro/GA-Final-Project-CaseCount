@@ -7,7 +7,7 @@ export default function Picker() {
 
   return (
     <article className='pickers-panel'>
-       <h4>Colors</h4>
+       <h4 className='picker-title'>Colors</h4>
     <div className='picker-container'>
        {colors.map((color,index) => (
         <div key={index} className='picker-card'>

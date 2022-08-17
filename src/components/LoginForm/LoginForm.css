@@ -23,9 +23,9 @@ form button {
   background-color: #1A072A;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
 	border: none;
-	font: inherit;
+	font-weight: 700;
 	cursor: pointer;
 	outline: inherit;
   padding: 8px 75px;
