@@ -1,14 +1,35 @@
-ol, ul, menu {
-  list-style: none;
-}
-.auth-tabs {
-  display: flex;
-  flex: row;
-  justify-content: center;
-}
-.form-login {
+.form-signup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+}
+
+.form-signup label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+
+form input {
+  border: none;
+  border-radius: 20px;
+  padding: 6px 8px;
+}
+
+form button {
+  color: #F4DB26;
+  background-color: #1A072A;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  padding: 8px 75px;
+  border-radius: 20px;
+}
+.activeTab {
+  border-bottom: 5px solid #1A072A;
 }

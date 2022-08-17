@@ -1,4 +1,19 @@
+ol, ul, menu {
+  list-style: none;
+}
+.auth-tabs {
+  display: flex;
+  flex-direction: row;
 
+  justify-content: center;
+  gap: 24px;
+}
+.auth-tabs li {
+  font-size: 32px;
+  color: #1A072A;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
 .login-form {
   background-color: #F4DB26;
   max-width: 500px;
@@ -10,5 +25,8 @@
     overflow: hidden;
     margin: 0 auto;
     margin-top: 60px;
+}
 
+.login-form-container {
+  padding-top: 20px
 }
