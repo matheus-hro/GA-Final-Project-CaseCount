@@ -6,13 +6,12 @@ export default function LoginForm (props) {
   const [statusMessage, setStatusMessage] = useState("");
   const navigate = useNavigate();
 
-  async function fetchUser(e){
+  async function handleSubmit(e){
       e.preventDefault();
       const user = {
         email: e.target.form.email.value,
         password: e.target.form.password.value,
       };
-      console.log(user)
       try {
           let fetchResponse = await fetch("/api/login", {
               method: "POST",
@@ -33,20 +32,16 @@ export default function LoginForm (props) {
 
   return (
     <div className='form-container'>
-      <ul>
-        <li>log in</li>
-        <li>sign up</li>
-      </ul>
-        <form className="form-login" action="">
-          <label><span>Email</span>
+      <form className="form-signup" action="">
+        <label><span>Email</span>
           <input type="email" name="email" required/>
-          </label>
-          <label><span>Password</span>
+        </label>
+        <label><span>Password</span>
           <input type='password' name="password" required/>
-          </label>
-        <button type="submit" onClick={fetchUser}>login</button>
-        </form>
-          <p>{statusMessage}</p>
+        </label>
+        <button type="submit" onClick={handleSubmit}>Log in</button>
+      </form>
+      <p>{statusMessage}</p>
     </div>  
   )
 }
