@@ -5,15 +5,24 @@ import SignupForm from "../../components/SignupForm/SignupForm";
 
 
 export default function LoginPage(props) {
-  const [userRegistered, setUserRegistered] = useState(true)
+  const [activeTab, setActiveTab] = useState('login');
+  
+
   return(
     <div className='login-form'>
-      {userRegistered ? (
+      <div className='login-form-container'>
+        <ul className='auth-tabs'>
+        <li  className={activeTab==="login" ? "activeTab" : null} onClick={()=>setActiveTab("login")} >log in</li>
+        <li  className={activeTab==="signup" ? "activeTab" : null} onClick={()=>setActiveTab("signup")}>sign up</li>
+        </ul>
+        {activeTab === 'login' ? 
         <LoginForm />
-      ) : (
+        : 
         <SignupForm />
-      )}
+        }
+      </div>
     </div>
   )
   
 }
+
