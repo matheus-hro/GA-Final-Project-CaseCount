@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Picker.css';
 
 export default function Picker() {
 
   const colors = ["#B81731", "#FF632C", "#FFCC33", "#009956", "#2A3778", "#007995", "#EAD1CB", "#B9A8CA"]
-
+  const [background, setBackground] = useState("");
   return (
     <article className='pickers-panel'>
        <h4 className='picker-title'>Colors</h4>
@@ -15,7 +15,9 @@ export default function Picker() {
              className="box"
              style={{
               background:color,
-             }}>
+              border: color === background ? "2px solid #000" : ""
+             }}
+             onClick={() => setBackground(color)}>
 
           </div>
         </div>
