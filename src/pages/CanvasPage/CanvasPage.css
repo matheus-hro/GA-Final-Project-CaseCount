@@ -7,4 +7,13 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
+  align-self: center;
+}
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.canvas-middle-container {
+  display: flex;
+  flex-direction: column;
 }

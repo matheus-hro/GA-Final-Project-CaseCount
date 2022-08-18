@@ -12,7 +12,7 @@ nav {
 }
 a, #navlink {
   text-decoration: none;
-  color: #1A072A !important;
+  color: #1A072A ;
   position: relative;
 }
 

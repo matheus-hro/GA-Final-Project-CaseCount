@@ -1,22 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Picker.css';
 
-export default function Picker() {
-
-  const colors = ["#B81731", "#FF632C", "#FFCC33", "#009956", "#2A3778", "#007995", "#EAD1CB", "#B9A8CA"]
-
+export default function Picker(props) {
+  
+  const colors = props.colors;
+  const caseColor = props.caseColor
   return (
     <article className='pickers-panel'>
-       <h4>Colors</h4>
+       <h4 className='picker-title'>Colors</h4>
     <div className='picker-container'>
        {colors.map((color,index) => (
         <div key={index} className='picker-card'>
           <div 
              className="box"
-             style={{
-              background:color,
-             }}>
-
+             style={{backgroundColor: color.hex,
+               boxShadow: caseColor === color.hex ? "0 0 5px 000" : ""
+              }}
+             
+             onClick={() => props.setCanvasColor(color.hex)}>
+            
           </div>
         </div>
        ))}
