@@ -39,7 +39,7 @@ export default function CanvasPage (props) {
       <div>
         <Navbar />
         <div className=' wrap canvas-main'>
-          <Picker colors={availableColors} setCanvasColor={setCanvasColor} />
+          <Picker colors={availableColors} setCanvasColor={setCanvasColor} selectedColor={canvasColor}/>
           <div className='canvas-middle-container'>
             <PhonePreview caseColor={canvasColor}/>
             <div className='add-save-btns'>

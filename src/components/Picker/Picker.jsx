@@ -4,7 +4,8 @@ import './Picker.css';
 export default function Picker(props) {
   
   const colors = props.colors;
-  const caseColor = props.caseColor
+  const selectedColor = props.selectedColor
+  
   return (
     <article className='pickers-panel'>
        <h4 className='picker-title'>Colors</h4>
@@ -14,7 +15,7 @@ export default function Picker(props) {
           <div 
              className="box"
              style={{backgroundColor: color.hex,
-               boxShadow: caseColor === color.hex ? "0 0 5px 000" : ""
+               boxShadow: selectedColor === color.hex ? "0 0 5px 000" : ""
               }}
              
              onClick={() => props.setCanvasColor(color.hex)}>
