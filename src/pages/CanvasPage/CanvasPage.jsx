@@ -6,13 +6,30 @@ import PhonePreview from '../../components/PhonePreview/PhonePreview';
 import PhoneDropDown from '../../components/PhoneDropDown/PhoneDropDown';
 import AddToCartBtn from '../../components/AddToCartBtn/AddToCartBtn';
 import SaveBtn from '../../components/SaveBtn/SaveBtn';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 
-export default class CanvasPage extends React.Component {
-  state= {
-    userRegistered: true
-  }
-  render() {
+export default function CanvasPage (props) {
+  const [availableColors, setAvailableColors] = useState([]);
+  
+    useEffect(async ()=>{
+      try{
+        const fetchResponse = await fetch('api/colors', {
+          method: 'GET',
+          headers:{'Content-Type':'application/json'},
+          referrerPolicy:'origin'
+        });
+        if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request');
+        const colors = await fetchResponse.json();
+        console.log(colors)
+        setAvailableColors(JSON.parse(colors));
+      }catch(err){
+        console.log("Caught error when fetching colors: ", err);
+      }
+      
+    },[])
+  
     return(
       <div>
         <Navbar />
@@ -32,5 +49,4 @@ export default class CanvasPage extends React.Component {
       </div>
       
     )
-  }
 }
