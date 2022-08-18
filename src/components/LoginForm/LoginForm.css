@@ -14,7 +14,7 @@
 
 form input {
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 6px 8px;
 }
 
@@ -28,8 +28,8 @@ form button {
 	font-weight: 700;
 	cursor: pointer;
 	outline: inherit;
-  padding: 8px 75px;
-  border-radius: 20px;
+  padding: 8px 95px;
+  border-radius: 10px;
 }
 .activeTab {
   border-bottom: 5px solid #1A072A;

@@ -46,7 +46,7 @@
     cursor: pointer;
     outline: inherit;
     padding: 8px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
   .reset-btn {
     color: #1A072A;
@@ -56,5 +56,5 @@
     cursor: pointer;
     outline: inherit;
     padding: 8px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
   }

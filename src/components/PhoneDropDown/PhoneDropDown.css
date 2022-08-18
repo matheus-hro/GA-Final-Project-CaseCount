@@ -1,3 +1,8 @@
 .dropdown {
   padding-bottom: 30vh;
 }
+
+#dropdown-basic {
+  font-family: 'Hind' !important;
+  background-color: #1A072A !important;
+}
