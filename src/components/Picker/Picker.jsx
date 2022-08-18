@@ -12,7 +12,8 @@ export default function Picker(props) {
         <div key={index} className='picker-card'>
           <div 
              className="box"
-             style={{backgroundColor: color.hex}}
+             style={{backgroundColor: color.hex,
+              }}
              
              onClick={() => props.setCanvasColor(color.hex)}>
             

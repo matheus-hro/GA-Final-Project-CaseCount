@@ -20,11 +20,13 @@ export default function CanvasPage() {
       <Navbar />
       <div className=' wrap canvas-main'>
         <Picker colors={availableColors} setCanvasColor={setCanvasColor} />
-        <PhonePreview caseColor={canvasColor}/>
-        <div className='add-save-btns'>
-          <AddToCartBtn />
-          <SaveBtn />
+        <div className='canvas-middle-container'>
+          <PhonePreview caseColor={canvasColor}/>
+          <div className='add-save-btns'>
+            <AddToCartBtn />
+            <SaveBtn />
           </div>
+        </div>
         <div>
           <PhoneDropDown />
           
