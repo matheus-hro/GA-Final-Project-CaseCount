@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import './Modal.css';
 
-export default function Modal (props){ 
+export default function Modal (props){
+  const setOpenModal = props.setModalOpen;
+
   return(
     <div className='modal-overlay'>
       <div className='modal-container'>
-        <button>&times;</button>
+        <button onClick={()=> props.setOpenModal(false)}>&times;</button>
           <div>
             <img src="" alt="" />
           </div>
