@@ -7,17 +7,15 @@ export default function Modal (props){
   return(
     <div className='modal-overlay'>
       <div className='modal-container'>
-        <button onClick={()=> props.setOpenModal(false)}>&times;</button>
-          <div>
-            <img src="" alt="" />
+        
+      <div className='modal-body'>
+          <button className='close-modal-btn' onClick={()=> props.setOpenModal(false)}>&times;</button>
+          <p>iPhone Case</p>
+          <p>$24</p>
           </div>
-            <div className='modal-body'>
-              <p>iPhone Case</p>
-              <p>$24</p>
+            <div className='modal-cta'>
+              <button className='addToCart-btn'>Add to cart</button>
             </div>
-              <div className='modal-cta'>
-                <button className='addToCart-btn'>Add to cart</button>
-              </div>
       </div>
     </div>
   )

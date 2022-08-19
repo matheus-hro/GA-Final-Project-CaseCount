@@ -39,19 +39,19 @@ export default function CanvasPage (props) {
     return(
       <div>
         <Navbar />
+        {modalOpen && <Modal setOpenModal={setModalOpen} />}
         <div className=' wrap canvas-main'>
           <Picker colors={availableColors} setCanvasColor={setCanvasColor} selectedColor={canvasColor}/>
           <div className='canvas-middle-container'>
             <PhonePreview caseColor={canvasColor}/>
             <div className='add-save-btns'>
               <AddToCartBtn  setOpenModal={setModalOpen}/>
-        
               <SaveBtn />
             </div>
           </div>
           <div>
             <PhoneDropDown />
-            {modalOpen && <Modal setOpenModal={setModalOpen} />}
+            
           </div>
             
         </div> 
