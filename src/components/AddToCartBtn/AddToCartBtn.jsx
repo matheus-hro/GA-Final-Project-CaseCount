@@ -1,10 +1,12 @@
 
 import './AddToCartBtn.css';
 
-export default function AddToCart(){
-  
+export default function AddToCart(props){
+  const setOpenModal = props.setModalOpen;
   return (
-    <button className='addToCart-btn'>add to cart</button>
+    <button 
+      className='addToCart-btn'
+      onClick={() => props.setOpenModal(true)}>add to cart</button>
 
   )
 }

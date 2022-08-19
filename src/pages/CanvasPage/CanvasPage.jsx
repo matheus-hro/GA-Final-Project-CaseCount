@@ -1,6 +1,5 @@
 
 import React, {useState} from 'react';
-
 import './CanvasPage.css';
 import Navbar from "../../components/Navbar/Navbar";
 import Picker from '../../components/Picker/Picker';
@@ -8,12 +7,14 @@ import PhonePreview from '../../components/PhonePreview/PhonePreview';
 import PhoneDropDown from '../../components/PhoneDropDown/PhoneDropDown';
 import AddToCartBtn from '../../components/AddToCartBtn/AddToCartBtn';
 import SaveBtn from '../../components/SaveBtn/SaveBtn';
+import Modal from '../../components/Modal/Modal';
 import { useEffect } from 'react';
 
 
 export default function CanvasPage (props) {
   const [availableColors, setAvailableColors] = useState([]);
   const [canvasColor, setCanvasColor] = useState("white");
+  const [modalOpen, setModalOpen] = useState(false);
 
   async function fetchColors(){
     try{
@@ -43,14 +44,16 @@ export default function CanvasPage (props) {
           <div className='canvas-middle-container'>
             <PhonePreview caseColor={canvasColor}/>
             <div className='add-save-btns'>
-              <AddToCartBtn />
+              <AddToCartBtn  setOpenModal={setModalOpen}/>
+        
               <SaveBtn />
             </div>
           </div>
           <div>
             <PhoneDropDown />
-            
+            {modalOpen && <Modal setOpenModal={setModalOpen} />}
           </div>
+            
         </div> 
       </div>
 
