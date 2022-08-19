@@ -28,4 +28,8 @@
 }
 .close-modal-btn {
   align-self: end;
+  border: none;
+  background-color: white;
+  font-size: 52px;
+  
 }
