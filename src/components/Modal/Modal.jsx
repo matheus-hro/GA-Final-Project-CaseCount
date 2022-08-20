@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import CanvasBtn from '../CanvasBtn/CanvasBtn';
 import './Modal.css';
 
 export default function Modal (props){
@@ -14,7 +15,7 @@ export default function Modal (props){
           <p>$24</p>
           </div>
             <div className='modal-cta'>
-              <button className='addToCart-btn'>Add to cart</button>
+              <CanvasBtn className='addToCart-btn' text='Add to cart'/>
             </div>
       </div>
     </div>
