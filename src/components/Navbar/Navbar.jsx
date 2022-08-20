@@ -17,7 +17,7 @@ export default function Navbar(props) {
         <div className='nav-right'>
           {props.user ? <span>Welcome {props.user.name}!</span> : ""}
           {props.user ? <Link to='/logout' id="navlink"><h4>log out</h4></Link> : <Link to='/login' id="navlink"><h4>log in</h4></Link>} 
-          <Link to='/favorites' id="navlink"><h4>favorites</h4></Link>
+          <Link to='/saved' id="navlink"><h4>saved</h4></Link>
           <Link to='/cart' id="navlink"><h4>cart</h4></Link>
         </div>
       </section>
