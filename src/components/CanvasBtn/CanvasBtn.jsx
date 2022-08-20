@@ -9,6 +9,5 @@ export default function CanvasBtn(props){
       onClick={() => props.handleClick(true)}
       >{props.text}
     </button>
-
   )
 }

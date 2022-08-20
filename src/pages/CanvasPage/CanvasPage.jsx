@@ -3,19 +3,13 @@ import React, {useState} from 'react';
 import './CanvasPage.css';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import * as dbFetch from '../../dbFetch/dbBarrel.mjs';
+import * as api from '../../api/apiBarrel.mjs';
 import * as Components from '../../components/componentBarrel.mjs';
-
-const Navbar = Components.Navbar;
-const Picker = Components.Picker;
-const PhonePreview = Components.PhonePreview;
-const PhoneDropDown = Components.PhoneDropdown;
-const CanvasBtn = Components.CanvasBtn;
-const Modal = Components.Modal;
 
 
 
 export default function CanvasPage (props) {
+  const {Navbar, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal } = Components;
   const location = useLocation();
   const [availableColors, setAvailableColors] = useState([]);
   const [phoneModel, setPhoneModel] = useState('iphone')
@@ -23,13 +17,13 @@ export default function CanvasPage (props) {
   const [modalOpen, setModalOpen] = useState(false);
   
   async function fetchColorsFromDb(){
-    const colors = await dbFetch.Color.index();
+    const colors = await api.Color.index();
     setAvailableColors(colors);
   }
 
   async function saveDesign(){
     if(props.user){
-      let response = await dbFetch.UserDesign.create({user:props.user._id, color:caseColor._id, phoneModel:phoneModel});
+      let response = await api.UserDesign.create({user:props.user._id, color:caseColor._id, phoneModel:phoneModel});
       console.log(response);
     }else{
       alert("Sign up to save your designs!")

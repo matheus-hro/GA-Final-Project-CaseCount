@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import * as Components from '../../components/componentBarrel.mjs'
-const CanvasBtn = Components.CanvasBtn
 
 export default function Modal (props){
-
+  const {CanvasBtn} = Components;
   return(
     <div className='modal-overlay'>
       <div className='modal-container'>

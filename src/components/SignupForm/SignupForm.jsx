@@ -1,6 +1,6 @@
 import './SignupForm.css';
 import React, {useState} from 'react';
-import * as dbFetch from '../../dbFetch/dbBarrel.mjs'
+import * as api from '../../api/apiBarrel.mjs'
 
 export default function SignupForm(props){
   const [statusMessage, setStatusMessage] = useState("");
@@ -12,7 +12,7 @@ export default function SignupForm(props){
         email: e.target.form.email.value,
         password: e.target.form.password.value,
     };
-    let response = await dbFetch.User.create(user)
+    let response = await api.User.create(user)
     if(response){
         setStatusMessage("Successfully registered!")
     }else{

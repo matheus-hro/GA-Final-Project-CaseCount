@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.get('/', blogPostCtrl.index);
 
-/login
-/canvas 
-/cart
-/about
+// /login
+// /canvas 
+// /cart
+// /about
 
 
 module.exports = router;

@@ -1,11 +1,13 @@
 import {Link} from 'react-router-dom'
 import './HomePage.css'
 import * as Components from '../../components/componentBarrel.mjs';
-const Navbar = Components.Navbar;
+
 
 
 
 export default function HomePage(props){
+  const {Navbar} = Components;
+
   return (
     <>
     <Navbar user={props.user}/>
