@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import CanvasBtn from '../CanvasBtn/CanvasBtn';
 import './Picker.css';
 
 export default function Picker(props) {
@@ -25,11 +26,9 @@ export default function Picker(props) {
        ))}
     </div>
     <div className='picker-btns'>
-      <button className='randomize-btn'>randomize</button>
-      <button className='reset-btn'>reset</button>
+      <CanvasBtn className='randomize-btn' text='randomize'/>
+      <CanvasBtn className='reset-btn' text='reset'/>
     </div>
-    
-
     </article>
    
   )
