@@ -27,7 +27,7 @@ export default function CanvasPage (props) {
 
   async function saveDesign(){
     if(props.user){
-      let response = await api.UserDesign.create({user:props.user._id, color:caseColor._id, caseModel:caseModel});
+      let response = await api.UserDesign.create({color:caseColor._id, caseModel:caseModel._id});
       //setOpenModal()
       console.log(response);
     }else{

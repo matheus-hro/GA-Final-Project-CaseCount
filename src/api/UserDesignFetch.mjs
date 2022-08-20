@@ -1,10 +1,11 @@
 export {create, index}
 
 async function create (newUserDesign){
+    const jwt = localStorage.getItem('token');
     try{
     const fetchResponse = await fetch('api/user-design', {
         method: 'POST',
-        headers:{'Content-Type':'application/json'},
+        headers:{'Content-Type':'application/json', 'Authorization':'Bearer ' + jwt},
         referrerPolicy:'origin',
         body:JSON.stringify(newUserDesign)
     });
@@ -16,7 +17,6 @@ async function create (newUserDesign){
 }
 
 async function index(){
-    console.log("fetching userdesign from db")
     const jwt = localStorage.getItem('token');
     try{
     const fetchResponse = await fetch('api/user-design', {

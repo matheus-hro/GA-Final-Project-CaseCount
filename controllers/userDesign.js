@@ -6,7 +6,7 @@ module.exports = {
 }
 
 async function create (req, res) {
-    let newDesign = req.body;
+    let newDesign = {...req.body, user:req.user._id};
     try {
         newDesign = await UserDesign.create(newDesign)
         res.status(200).json("Successfully saved!")
