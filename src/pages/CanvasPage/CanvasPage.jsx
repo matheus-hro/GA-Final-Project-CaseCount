@@ -37,26 +37,23 @@ export default function CanvasPage (props) {
     fetchColorsFromDb();   
   },[])
   
-    return(
-      <div>
-        <Navbar user={props.user}/>
-        {modalOpen && <Modal setOpenModal={setModalOpen} />}
-        <div className=' wrap canvas-main'>
-          <Picker colors={availableColors} setCaseColor={setCaseColor} selectedColor={caseColor}/>
-          <div className='canvas-middle-container'>
-            <PhonePreview caseColor={caseColor.hex}/>
-            <div className='add-save-btns'>
-              <CanvasBtn handleClick={setModalOpen} className='addToCart-btn' text='Add to cart' />
-              <CanvasBtn handleClick={saveDesign, setModalOpen} className='save-btn' text='Save' />
-            </div>
+  return(
+    <div>
+      <Navbar user={props.user}/>
+      {modalOpen && <Modal setOpenModal={setModalOpen} />}
+      <div className=' wrap canvas-main'>
+        <Picker colors={availableColors} setCaseColor={setCaseColor} selectedColor={caseColor}/>
+        <div className='canvas-middle-container'>
+          <PhonePreview caseColor={caseColor.hex}/>
+          <div className='add-save-btns'>
+            <CanvasBtn handleClick={setModalOpen} className='addToCart-btn' text='Add to cart' />
+            <CanvasBtn handleClick={saveDesign /*needs to add openModal */} className='save-btn' text='Save' /> 
           </div>
-          <div>
-            <PhoneDropDown />
-            
-          </div>
-            
-        </div> 
-      </div>
-
-    )
+        </div>
+        <div>
+          <PhoneDropDown />
+        </div>
+      </div> 
+    </div>
+  )
 }

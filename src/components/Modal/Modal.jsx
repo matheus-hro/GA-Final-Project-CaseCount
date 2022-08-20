@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Modal.css'
 import * as Components from '../../components/componentBarrel.mjs'
 
 export default function Modal (props){
