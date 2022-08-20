@@ -1,4 +1,4 @@
-export {create}
+export {create, index}
 
 async function create (newUserDesign){
     try{
@@ -7,6 +7,21 @@ async function create (newUserDesign){
         headers:{'Content-Type':'application/json'},
         referrerPolicy:'origin',
         body:JSON.stringify(newUserDesign)
+    });
+        if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request');
+        return await fetchResponse.json()
+    }catch(err){
+        return ("Caught error when posting custom design: ", err)
+    }
+}
+
+async function index (id){
+    try{
+    const fetchResponse = await fetch('api/user-design', {
+        method: 'GET',
+        headers:{'Content-Type':'application/json'},
+        referrerPolicy:'origin',
+        body:JSON.stringify('id')
     });
         if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request');
         return await fetchResponse.json()

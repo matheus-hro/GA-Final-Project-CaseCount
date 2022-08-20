@@ -6,13 +6,12 @@ import { useEffect } from 'react';
 import * as api from '../../api/apiBarrel.mjs';
 import * as Components from '../../components/componentBarrel.mjs';
 
-
-
 export default function CanvasPage (props) {
-  const {Navbar, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal } = Components;
+  const {Navbar, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal} = Components;
   const location = useLocation();
   const [availableColors, setAvailableColors] = useState([]);
-  const [phoneModel, setPhoneModel] = useState('iphone')
+  const [availableCases, setAvailableCases] = useState([]);
+  const [caseModel, setCaseModel] = useState(null);
   const [caseColor, setCaseColor] = useState("white");
   const [modalOpen, setModalOpen] = useState(false);
   
@@ -21,9 +20,15 @@ export default function CanvasPage (props) {
     setAvailableColors(colors);
   }
 
+  async function fetchCaseModelsFromDb(){
+    const caseModels = await api.CaseModel.index();
+    setAvailableCases(caseModels);
+  }
+
   async function saveDesign(){
     if(props.user){
-      let response = await api.UserDesign.create({user:props.user._id, color:caseColor._id, phoneModel:phoneModel});
+      let response = await api.UserDesign.create({user:props.user._id, color:caseColor._id, caseModel:caseModel});
+      //setOpenModal()
       console.log(response);
     }else{
       alert("Sign up to save your designs!")
@@ -31,10 +36,8 @@ export default function CanvasPage (props) {
   }
   
   useEffect(()=>{
-    if(location.state){
-      setPhoneModel(location.state.phone)
-    }
-    fetchColorsFromDb();   
+    fetchColorsFromDb();
+    fetchCaseModelsFromDb();   
   },[])
   
   return(
@@ -51,7 +54,7 @@ export default function CanvasPage (props) {
           </div>
         </div>
         <div>
-          <PhoneDropDown />
+          <PhoneDropDown setCaseModel={setCaseModel} availableCases={availableCases}/>
         </div>
       </div> 
     </div>

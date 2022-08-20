@@ -1,7 +1,6 @@
 const Color = require('../models/Color.js');
 
 async function index (req, res) {
-    console.log("color fetch req is: ", req);
     try {
         const colors = await Color.find();
         res.status(200).json(colors)
