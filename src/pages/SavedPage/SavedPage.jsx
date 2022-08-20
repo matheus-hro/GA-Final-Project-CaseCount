@@ -25,7 +25,10 @@ export default function SavedPage (props) {
     <div>
       <Navbar user={props.user}/>
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
-      <section className='wrap saved-main'>
+      <section className='wrap main'>
+        <h2>Saved</h2>
+        <p>My saved items</p>
+        <article className='saved-main'>
         {phones.map((phone,index) => (
           <div key={index} className= "savedPhone-container">
             <div className= "savedPhone-img">
@@ -36,6 +39,8 @@ export default function SavedPage (props) {
             <CanvasBtn handleClick={setModalOpen} className='addToCart-btn' text='Add to cart' />
           </div>
         ))}
+        </article>
+       
       </section>
     </div>
   )

@@ -1,11 +1,13 @@
 .saved-main {
   display: flex;
+  
+}
+.main {
   padding-top: 60px;
 }
-
 .savedPhone-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
