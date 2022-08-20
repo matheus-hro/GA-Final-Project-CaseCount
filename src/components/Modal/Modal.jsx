@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import CanvasBtn from '../CanvasBtn/CanvasBtn';
-import './Modal.css';
+import * as Components from '../../components/componentBarrel.mjs'
+const CanvasBtn = Components.CanvasBtn
 
 export default function Modal (props){
 

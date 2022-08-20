@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import CanvasBtn from '../CanvasBtn/CanvasBtn';
+import * as Components from '../componentBarrel.mjs'
 import './Picker.css';
+const CanvasBtn = Components.CanvasBtn;
 
 export default function Picker(props) {
   

@@ -1,6 +1,7 @@
-import Navbar from '../../components/Navbar/Navbar';
-import {Link, Navigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './HomePage.css'
+import * as Components from '../../components/componentBarrel.mjs';
+const Navbar = Components.Navbar;
 
 
 
@@ -32,6 +33,5 @@ export default function HomePage(props){
         </Link>
       </article>
     </>
-
   )
 }

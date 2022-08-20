@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
 import './SignupForm.css';
+import React, {useState} from 'react';
+import * as dbFetch from '../../dbFetch/dbBarrel.mjs'
 
 export default function SignupForm(props){
   const [statusMessage, setStatusMessage] = useState("");
@@ -11,21 +12,13 @@ export default function SignupForm(props){
         email: e.target.form.email.value,
         password: e.target.form.password.value,
     };
-    try {
-    const fetchResponse = await fetch('/api/signup', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(user)
-    })
-    if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
-    
-    const signupStatus = await fetchResponse.json()
-    console.log(signupStatus.message);
-    //setStatusMessage(signupStatus.message);    
-    } catch(err) {
-        console.log("Error when fetching user: ", err)
-        setStatusMessage("Failed! Please try again.")
+    let response = await dbFetch.User.create(user)
+    if(response){
+        setStatusMessage("Successfully registered!")
+    }else{
+        setStatusMessage("Failed to register.")
     }
+    
   }
 
   //need to add password and complete form validation

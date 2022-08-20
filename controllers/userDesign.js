@@ -7,10 +7,10 @@ module.exports = {
 async function create (req, res) {
     let newDesign = req.body;
     try {
-        await UserDesign.create(newDesign)
-        res.status(200).json("Success!")
+        let newDesign = await UserDesign.create(newDesign)
+        res.status(200).json("Successfully saved!")
     } catch(err) {
         console.log("error in userdesign create controller is: ", err)
-        res.json(err);
- }
+        res.status(400).json("Failed to save design.")
+    }
 }

@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import './LoginPage.css'
-import LoginForm from "../../components/LoginForm/LoginForm";
-import SignupForm from "../../components/SignupForm/SignupForm";
-import classnames from 'classnames'
-
+import * as Components from '../../components/componentBarrel.mjs'
+const SignupForm = Components.SignupForm;
+const LoginForm = Components.LoginForm;
 
 export default function LoginPage(props) {
   const [activeTab, setActiveTab] = useState('login'); 

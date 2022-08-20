@@ -6,10 +6,11 @@ async function authenticate (req, res) {
    //this function is used for non-login authentication
    let newBlogPost = req.body;
    try{
-       await BlogPost.create(newBlogPost)
-       res.status(200).json("Success!")
+      await BlogPost.create(newBlogPost)
+      res.status(200).json("Success!")
    }catch(err){
-       res.json(err);
+      console.log("error caught in authenticate user controller: ", err)
+      res.status(400).json("Failed to authenticate.")
    }
 }
 
@@ -17,11 +18,10 @@ async function create (req, res) {
    let user = req.body;
    try {
       user = await User.create(user)
-      
-      res.status(200).json({didRegister:true, message:'Success! You can now log in.'})
+      res.status(200).json("Successfully registered!")
    }catch(err){
       console.log("error in user create controller is: ", err)
-      res.status(400).json({didRegister:false, message:'Unable to create user!'});
+      res.status(400).json("Failed to register.");
    }
 }
 
@@ -32,15 +32,15 @@ async function login (req, res) {
       const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '48h' });
       res.status(200).json(token)
    } catch(err) {
-      console.log(err);
-      res.status(400).json('Bad credentials');
+      console.log("error caught in login user controller: ", err);
+      res.status(400).json('Failed to authenticate.');
    }
 }
 
 async function destroy (req, res) {
    try{
-     let blogPostArray = await BlogPost.find()
-     res.status(200).json(blogPostArray)
+     let user = await User.find(req.body._id)
+     res.status(200).json("Deleted.")
   }catch(err){
      res.json(err);
   }

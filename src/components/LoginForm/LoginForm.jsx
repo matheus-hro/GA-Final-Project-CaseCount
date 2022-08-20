@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './LoginForm.css';
 import { useNavigate } from 'react-router-dom'
+import * as dbFetch from '../../dbFetch/dbBarrel.mjs'
 
 export default function LoginForm (props) {
   const [statusMessage, setStatusMessage] = useState("");
@@ -12,21 +13,12 @@ export default function LoginForm (props) {
         email: e.target.form.email.value,
         password: e.target.form.password.value,
       };
-      try {
-          let fetchResponse = await fetch("/api/login", {
-              method: "POST",
-              headers: {"Content-Type": "application/json",},
-              body: JSON.stringify(user)
-          })
-          if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
-          let token = await fetchResponse.json();
-          localStorage.setItem('token', token);
-          setStatusMessage("Signed in!");
-          navigate(-1, {replace: true});
-          
-      }catch(err){
-          console.log("Error when fetching user: ", err)
-          setStatusMessage("Failed! Please try again.")
+      let isLoggedIn = await dbFetch.User.login(user);
+      if (isLoggedIn){
+        setStatusMessage("Signed in!");
+        navigate(-1, {replace: true});
+      }else{
+        setStatusMessage("Failed! Please try again.")
       }
     }
 
