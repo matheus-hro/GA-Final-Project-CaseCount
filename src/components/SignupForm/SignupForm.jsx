@@ -23,7 +23,7 @@ export default function SignupForm(props){
 
   //need to add password and complete form validation
     return (
-      <div>
+      <div className='form-signup-container'>
         <form className="form-signup" action="">
             <label><span>Name</span>
                 <input type="text" name="name" required/>
@@ -39,7 +39,7 @@ export default function SignupForm(props){
             </label>
             <button type="submit" onClick={handleSubmit}>Sign up</button>
         </form>
-        <p>{statusMessage}</p>
+        <p className='signup-statusMsg'>{statusMessage}</p>
       </div>  
     )
 

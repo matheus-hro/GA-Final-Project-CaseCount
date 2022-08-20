@@ -1,4 +1,4 @@
-
+  
 import React, {useState} from 'react';
 import './CanvasPage.css';
 import { useLocation } from 'react-router-dom';
@@ -47,7 +47,7 @@ export default function CanvasPage (props) {
             <PhonePreview caseColor={caseColor.hex}/>
             <div className='add-save-btns'>
               <CanvasBtn handleClick={setModalOpen} className='addToCart-btn' text='Add to cart' />
-              <CanvasBtn handleClick={saveDesign} className='save-btn' text='Save' />
+              <CanvasBtn handleClick={saveDesign, setModalOpen} className='save-btn' text='Save' />
             </div>
           </div>
           <div>
