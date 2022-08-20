@@ -13,3 +13,12 @@
   flex-direction: column;
     gap: 8px;
 }
+.form-signup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.signup-statusMsg {
+  align-self: center;
+  font-weight: 700;
+}
