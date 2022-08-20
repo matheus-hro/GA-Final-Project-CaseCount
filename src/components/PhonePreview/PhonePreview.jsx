@@ -5,8 +5,8 @@ export default function PhonePreview(props) {
  
   return (
     <article className="phone-preview">
-      <div style={{backgroundColor: props.caseColor}}>
-        <img src="/images/iphone10case1.png" alt="" />
+      <div>
+        <img style={{backgroundColor: props.caseColor}} src="/images/iphone10case1.png" alt="" />
       </div>
       
     </article>
