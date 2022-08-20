@@ -1,14 +1,16 @@
-/*const Post = require('../models/contactForm.js'); 
+const UserDesign = require('../models/UserDesign.js');
+
 module.exports = {
     create
 }
 
 async function create (req, res) {
-    let newContact = req.body;
+    let newDesign = req.body;
     try {
-        await Post.create(newContact)
+        await UserDesign.create(newDesign)
         res.status(200).json("Success!")
     } catch(err) {
+        console.log("error in userdesign create controller is: ", err)
         res.json(err);
  }
-}*/
+}

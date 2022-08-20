@@ -20,7 +20,7 @@ async function create (req, res) {
       
       res.status(200).json({didRegister:true, message:'Success! You can now log in.'})
    }catch(err){
-      console.log("error is: ", err)
+      console.log("error in user create controller is: ", err)
       res.status(400).json({didRegister:false, message:'Unable to create user!'});
    }
 }

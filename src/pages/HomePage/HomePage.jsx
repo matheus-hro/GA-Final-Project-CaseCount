@@ -1,5 +1,5 @@
 import Navbar from '../../components/Navbar/Navbar';
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import './HomePage.css'
 
 
@@ -14,7 +14,7 @@ export default function HomePage(props){
        
       </article>
       <article className='wrap phone-gallery'>
-        <Link to='/canvas'>
+        <Link to='/canvas' state={{phone:'iphone'}}>
           <div className='phone-container'>
             <div>
               <img className="phone-img" src="./images/iphone12.png" alt="" />
@@ -22,7 +22,7 @@ export default function HomePage(props){
             <h4>iPhone</h4>
           </div>
         </Link>
-        <Link to='/canvas'>
+        <Link to='/canvas' state={{phone:'pixel'}}>
           <div className='phone-container'>
             <div>
               <img className="phone-img" src="./images/pixel4a.png" alt="" />
