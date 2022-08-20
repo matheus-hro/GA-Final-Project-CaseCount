@@ -10,6 +10,7 @@ function verifyToken (req, res, next) {
     token = token.replace('Bearer ', '');
     jwt.verify(token, SECRET, function(err, decoded) {
       if(err){
+        req.user=null;
         next(err);
       }else{
         req.user = decoded.user;    
@@ -17,6 +18,7 @@ function verifyToken (req, res, next) {
       }
     });
   }else{
+    req.user=null;
     next();
   }
 };

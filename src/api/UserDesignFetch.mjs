@@ -2,6 +2,9 @@ export {create, index}
 
 async function create (newUserDesign){
     const jwt = localStorage.getItem('token');
+    if(!jwt){
+        return "Not logged in - log in or sign up to save your designs!"
+    }
     try{
     const fetchResponse = await fetch('api/user-design', {
         method: 'POST',
@@ -18,6 +21,9 @@ async function create (newUserDesign){
 
 async function index(){
     const jwt = localStorage.getItem('token');
+    if(!jwt){
+        return []
+    }
     try{
     const fetchResponse = await fetch('api/user-design', {
         method: 'GET',
