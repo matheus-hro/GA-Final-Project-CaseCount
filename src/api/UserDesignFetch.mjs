@@ -15,17 +15,20 @@ async function create (newUserDesign){
     }
 }
 
-async function index(user){
+async function index(){
+    console.log("fetching userdesign from db")
+    const jwt = localStorage.getItem('token');
     try{
     const fetchResponse = await fetch('api/user-design', {
         method: 'GET',
-        headers:{'Content-Type':'application/json'},
+        headers:{'Content-Type':'application/json', 'Authorization':'Bearer ' + jwt},
         referrerPolicy:'origin',
-        body:JSON.stringify(user)
     });
         if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request');
         return await fetchResponse.json()
     }catch(err){
-        return ("Caught error when fetching user design: ", err)
+        console.log("Caught error when fetching user design: ", err)
+        return []
+        
     }
 }

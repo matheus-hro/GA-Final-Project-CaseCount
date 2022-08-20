@@ -10,11 +10,19 @@ import phoneImg from './testPhone.png';
 export default function SavedPage (props) {
   const {Navbar, Modal, CanvasBtn } = Components;
   const image = phoneImg;
-
   // temporary array to map through:
-  
   const [modalOpen, setModalOpen] = useState(false);
   const [savedDesigns, setSavedDesigns] = useState([]);
+
+  async function fetchSavedDesignsFromDb(){
+    const userDesigns = await api.UserDesign.index();
+    setSavedDesigns(userDesigns);
+  }
+
+  useEffect(()=>{
+    fetchSavedDesignsFromDb();   
+  },[])
+  
 
   return (
     <div>
@@ -27,7 +35,7 @@ export default function SavedPage (props) {
         {savedDesigns.map((e,i) => (
           <div key={i} className= "savedPhone-container">
             <div className= "savedPhone-img">
-              <img src={image} alt="" />
+              <img src={image} style={{backgroundColor:e.color.hex}} alt="" />
             </div>
             <h4>{e.caseModel.phoneModel}</h4>
             <h4>{e.caseModel.basePrice}</h4>
