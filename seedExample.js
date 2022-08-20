@@ -7,62 +7,62 @@ const CaseModel = require('./models/CaseModel.js');
 async function populate() {
   await CaseModel.deleteMany()
   await CaseModel.create({
-    manufacturer:'Apple',
-    model: 'iPhone X',
+    phoneManufacturer:'Apple',
+    phoneModel: 'iPhone X',
     type: 'Slim',
     basePrice: 19.99
   })
   await CaseModel.create({
-    manufacturer:'Apple',
-    model: 'iPhone X',
+    phoneManufacturer:'Apple',
+    phoneModel: 'iPhone X',
     type: 'Rugged',
     basePrice: 24.99
   })
   await CaseModel.create({    
-    manufacturer:'Apple',
-    model: 'iPhone XR',
+    phoneManufacturer:'Apple',
+    phoneModel: 'iPhone XR',
     type: 'Slim',
     basePrice: 19.99
   })
   await CaseModel.create({    
-    manufacturer:'Apple',
-    model: 'iPhone XR',
+    phoneManufacturer:'Apple',
+    phoneModel: 'iPhone XR',
     type: 'Rugged',
     basePrice: 24.99
   })
   await CaseModel.create({
-    manufacturer:'Google',
-    model: 'Pixel',
+    phoneManufacturer:'Google',
+    phoneModel: 'Pixel',
     type: 'Slim',
     basePrice: 19.99
   })
   await CaseModel.create({
-    manufacturer:'Google',
-    model: 'Pixel',
+    phoneManufacturer:'Google',
+    phoneModel: 'Pixel',
     type: 'Rugged',
     basePrice: 24.99
   })
   await CaseModel.create({    
-    manufacturer:'Google',
-    model: 'Pixel XL',
+    phoneManufacturer:'Google',
+    phoneModel: 'Pixel XL',
     type: 'Slim',
     basePrice: 19.99
   })
   await CaseModel.create({    
-    manufacturer:'Google',
-    model: 'Pixel XL',
+    phoneManufacturer:'Google',
+    phoneModel: 'Pixel XL',
     type: 'Rugged',
     basePrice: 24.99
   })
   await CaseModel.create({    
-    manufacturer:'Samsung',
-    model: 'Galaxy Note 5',
+    phoneManufacturer:'Samsung',
+    phoneModel: 'Galaxy Note 5',
     type: 'Slim',
     basePrice: 19.99
   })
   await CaseModel.create({    
-    manufacturer:'Samsung',
-    model: 'Galaxy Note 5',
+    phoneManufacturer:'Samsung',
+    phoneModel: 'Galaxy Note 5',
     type: 'Rugged',
     basePrice: 24.99
   }) 

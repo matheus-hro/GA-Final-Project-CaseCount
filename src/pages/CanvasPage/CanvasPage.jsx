@@ -39,6 +39,10 @@ export default function CanvasPage (props) {
     fetchColorsFromDb();
     fetchCaseModelsFromDb();   
   },[])
+
+  useEffect(()=>{
+    setCaseModel(availableCases[0])   
+  },[availableCases])
   
   return(
     <div>

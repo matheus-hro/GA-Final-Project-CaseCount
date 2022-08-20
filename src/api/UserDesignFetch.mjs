@@ -15,17 +15,17 @@ async function create (newUserDesign){
     }
 }
 
-async function index (id){
+async function index(user){
     try{
     const fetchResponse = await fetch('api/user-design', {
         method: 'GET',
         headers:{'Content-Type':'application/json'},
         referrerPolicy:'origin',
-        body:JSON.stringify('id')
+        body:JSON.stringify(user)
     });
         if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request');
         return await fetchResponse.json()
     }catch(err){
-        return ("Caught error when posting custom design: ", err)
+        return ("Caught error when fetching user design: ", err)
     }
 }

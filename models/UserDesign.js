@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const userDesignSchema = new Schema ({
     user: {type: Schema.Types.ObjectId , ref: 'User', required: [true, 'A design must belong to a user!']},
-    //TYPE MUST BE LATER CHANGED TO "OBJECTID" WITH RED TO "PHONEMODEL"
-    phoneModel: {type: String, required: [true, 'A design must have a phone model!']},
+    caseModel: {type: Schema.Types.ObjectId, ref: 'CaseModel', required: [true, 'A design must have a case model!']},
     color: {type: Schema.Types.ObjectId , ref: 'Color', required: [true, 'A design must have a color!']},
     pattern: {type: Schema.Types.ObjectId , ref: 'Pattern'},
     //quantity: {type: Schema.Types.Number, min: 0, max:9 , required: [true, 'Please enter a quantity between 0 and 9!']},
