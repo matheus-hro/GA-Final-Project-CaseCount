@@ -21,8 +21,8 @@ a, #navlink {
   position: absolute;
   color: #1A072A !important;
   width: 100%;
-  bottom: 5px;
-  border-bottom: 5px solid #1A072A ;
+  bottom: 10px;
+  border: 2px solid #1A072A !important;
 }
 .wrap {
   max-width: 1200px;
