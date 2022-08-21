@@ -1,10 +1,10 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function PhoneDropdown() {
+export default function PhoneDropdown(props) {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="dark" id="dropdown-basic count">
-        Phones
+        Select your phone
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
