@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path')
 const logger = require('morgan')
 const apiRoutes = require('../routes/apiRoutes.js')
+const stripeRoutes = require('../routes/stripeRoutes.js')
 const app = express();
 
 require('../config/database.js')
@@ -15,8 +16,13 @@ app.use(express.json());
 //app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 //app.use(express.static(path.join(__dirname, 'build')));
 
+
+app.use(express.urlencoded());
+
+
 // Put API routes here, before the "catch all" 
 app.use('/api', apiRoutes);
+app.use('/stripe', stripeRoutes);
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

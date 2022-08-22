@@ -19,6 +19,7 @@ export default function Navbar(props) {
           {props.user ? <Link to='/logout' id="navlink"><h4>log out</h4></Link> : <Link to='/login' id="navlink"><h4>log in</h4></Link>} 
           <Link to='/saved' id="navlink"><h4>saved</h4></Link>
           <Link to='/cart' id="navlink"><h4>cart</h4></Link>
+          <form action='stripe/checkout?price=1LZPuZDmNZgLC2UAud2vqNPj&quantity=3' method='POST'><button>Checkout</button></form>
         </div>
       </section>
     </nav>
