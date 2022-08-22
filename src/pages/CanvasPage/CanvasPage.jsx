@@ -60,6 +60,7 @@ export default function CanvasPage (props) {
         <div>
           <PhoneDropDown setCaseModel={setCaseModel} availableCases={availableCases}/>
         </div>
+        
       </div> 
     </div>
   )

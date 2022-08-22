@@ -18,7 +18,7 @@ export default function Picker(props) {
           <div 
              className="box"
              style={{backgroundColor: color.hex,
-               boxShadow: selectedColor === color.hex ? "0 0 5px 000" : ""
+               boxShadow: selectedColor.hex === color.hex ? "0 0 5px 000" : ""
               }}
              
              onClick={() => props.setCaseColor(color)}>
