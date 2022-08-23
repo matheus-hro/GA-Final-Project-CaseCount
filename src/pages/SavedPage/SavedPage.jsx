@@ -8,7 +8,7 @@ import phoneImg from './testPhone.png';
 
 
 export default function SavedPage (props) {
-  const {Navbar, Modal, CanvasBtn } = Components;
+  const {NavResponsive, Modal, CanvasBtn } = Components;
   const image = phoneImg;
   // temporary array to map through:
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,7 +26,7 @@ export default function SavedPage (props) {
 
   return (
     <div>
-      <Navbar user={props.user}/>
+      <NavResponsive user={props.user}/>
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <section className='wrap main'>
         <h2>Saved</h2>

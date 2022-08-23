@@ -7,7 +7,7 @@ import * as api from '../../api/apiBarrel.mjs';
 import * as Components from '../../components/componentBarrel.mjs';
 
 export default function CanvasPage (props) {
-  const {Navbar, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal} = Components;
+  const {NavResponsive, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal} = Components;
   const location = useLocation();
   const [availableColors, setAvailableColors] = useState([]);
   const [availableCases, setAvailableCases] = useState([]);
@@ -46,7 +46,7 @@ export default function CanvasPage (props) {
   
   return(
     <div>
-      <Navbar user={props.user}/>
+      <NavResponsive user={props.user}/>
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <div className=' wrap canvas-main'>
         <Picker colors={availableColors} setCaseColor={setCaseColor} selectedColor={caseColor}/>
