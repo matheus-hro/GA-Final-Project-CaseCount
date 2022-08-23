@@ -6,11 +6,12 @@ import * as Components from '../../components/componentBarrel.mjs';
 
 
 export default function HomePage(props){
-  const {Navbar} = Components;
+  const { NavResponsive} = Components;
 
   return (
     <>
-    <Navbar user={props.user}/>
+    <NavResponsive user={props.user} />
+   
     <article className='intro-content'>
         <h1 className='intro-title'>Custom Cases</h1>
         <p>Select your phone, start customizing</p>

@@ -34,3 +34,19 @@
   background-color: #1A072A;
 }
 
+/* btn hover & click states */
+.save-btn:active, .randomize-btn:active {
+  color: #1A072A;
+  background-color: #F4DB26;
+}
+.addToCart-btn:active {
+  color:#F4DB26;
+  background-color: #1A072A;
+}
+
+.reset-btn:active {
+  color:#FFFFFF;
+  background-color: #1A072A;
+  transition: transform 0.5s ease;
+}
+

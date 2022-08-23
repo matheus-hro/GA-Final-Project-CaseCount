@@ -44,5 +44,7 @@ a, #navlink {
   align-self: center;
 }
 .logo-img {
-  height: 50px;
+  height: 48px;
+  border-radius: 100px;
+  padding-bottom: 8px;
 }

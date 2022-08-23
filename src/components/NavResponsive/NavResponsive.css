@@ -1,0 +1,35 @@
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.nav-container, nav {
+  font-family: 'Montserrat', sans-serif;
+  color: #1A072A;
+  /* padding-top: 10px; */
+}
+.bg-brandYellow {
+  background-color: #F4DB26;
+  color: #1A072A;
+}
+a.nav-link {
+  color: #1A072A !important;
+  
+}
+.nav-link:hover {
+  color:#99325F !important;
+}
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-img {
+  height: 48px;
+  border-radius: 100px;
+  padding-bottom: 8px;
+}
+
+span {
+  padding-top: 10px;
+}
