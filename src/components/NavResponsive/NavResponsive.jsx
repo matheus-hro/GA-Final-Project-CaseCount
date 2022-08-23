@@ -10,8 +10,8 @@ export default function NavResponsive(props) {
       <div className="wrap">
         <Navbar bg="brandYellow" variant="" sticky="top" expand="lg">
           <Navbar.Brand>
-            <Nav.Link>
-              <img href="/" className="logo-img" src={logoImg} alt="" />
+            <Nav.Link href="/" >
+              <img className="logo-img" src={logoImg} alt="" />
             </Nav.Link>
           </Navbar.Brand>
           <Navbar.Toggle />
@@ -19,18 +19,10 @@ export default function NavResponsive(props) {
             <Nav className="me-auto"></Nav>
 
             <Nav>
-              <Nav.Link href="/">
-                cases
-              </Nav.Link>
-              <Nav.Link href="/login">
-                login
-              </Nav.Link>
-              <Nav.Link href="/saved">
-                saved
-              </Nav.Link>
-              <Nav.Link href="/cart">
-                cart
-              </Nav.Link>
+              <Nav.Link href="/">cases</Nav.Link>
+              <Nav.Link href="/login">login</Nav.Link>
+              <Nav.Link href="/saved">saved</Nav.Link>
+              <Nav.Link href="/cart">cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
