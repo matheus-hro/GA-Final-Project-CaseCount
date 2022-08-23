@@ -16,11 +16,14 @@ export default function NavResponsive(props) {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Nav className="me-auto"></Nav>
+            <Nav className="me-auto">
+            <Nav.Link href="/">cases</Nav.Link>
+            </Nav>
 
             <Nav>
-              <Nav.Link href="/">cases</Nav.Link>
-              <Nav.Link href="/login">login</Nav.Link>
+              {props.user ? <span>Welcome {props.user.name}!</span> : ""}
+          {props.user ? <Nav.Link href="/login">log out</Nav.Link> : <Nav.Link href="/login">login</Nav.Link>} 
+              
               <Nav.Link href="/saved">saved</Nav.Link>
               <Nav.Link href="/cart">cart</Nav.Link>
             </Nav>
