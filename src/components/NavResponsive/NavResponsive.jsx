@@ -26,6 +26,7 @@ export default function NavResponsive(props) {
               
               <Nav.Link href="/saved">saved</Nav.Link>
               <Nav.Link href="/cart">cart</Nav.Link>
+              <form action='stripe/checkout?price=1LZPuZDmNZgLC2UAud2vqNPj&quantity=3' method='POST'><button>Checkout</button></form>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
