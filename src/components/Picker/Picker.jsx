@@ -23,7 +23,6 @@ export default function Picker(props) {
               }}
              
              onClick={() => props.setCaseColor(color)}>
-            
           </div>
         </div>
        ))}
