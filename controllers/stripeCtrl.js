@@ -30,18 +30,23 @@ async function index(req, res) {
 }
 
 async function initiateCheckout(req, res) {
-  const mongodbArray = req.body
-  const stripeLineItems = structuredClone(req.body);
-  stripeLineItems.forEach((e)=> delete e.color)
-  const domainURL = process.env.DOMAIN;
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    line_items: stripeLineItems,
-    success_url: `${domainURL}/success.html/{CHECKOUT_SESSION_ID}`,
-    cancel_url: `${domainURL}/canceled.html`,
-    automatic_tax: {enabled: true},
-  });
-  return res.status(200).json(session);
+  try{const mongodbArray = req.body
+    const stripeLineItems = structuredClone(req.body);
+    stripeLineItems.forEach((e)=> delete e.color)
+    const domainURL = process.env.DOMAIN;
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: stripeLineItems,
+      success_url: `${domainURL}/success.html/{CHECKOUT_SESSION_ID}`,
+      cancel_url: `${domainURL}/canceled.html`,
+      automatic_tax: {enabled: true},
+    });
+    if (!session.ok) throw new Error("Fetch failed - Bad request");
+    return res.status(200).json(session);
+  }catch(err){
+    console.log(session)
+    return res.status(400).json("Sorry, try again!")
+  } 
 }
 
 async function checkoutStatus(req, res) {}

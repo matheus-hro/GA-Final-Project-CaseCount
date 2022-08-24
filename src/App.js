@@ -40,7 +40,7 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cart)
       });
-      if (!checkoutResponse.ok) throw new Error("Fetch failed - Bad request");
+      
       const session = await checkoutResponse.json();
       return stripe.redirectToCheckout({sessionId:session.id});    
     }catch(err){
