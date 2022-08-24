@@ -13,7 +13,7 @@ import {loadStripe} from '@stripe/stripe-js'
 function App() {
 
   const [userState, setUserState] = useState(null)
-  const [cart, setCart] = useState([{price:'price_1LZPuZDmNZgLC2UAud2vqNPj', quantity:3}])
+  const [cart, setCart] = useState([])
   const location = useLocation()
   
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
         method: "POST",
         referrerPolicy: "origin",
         headers: { "Content-Type": "application/json" },
-        body: cart
+        body: JSON.stringify(cart)
       });
       if (!checkoutResponse.ok) throw new Error("Fetch failed - Bad request");
       const session = await checkoutResponse.json();
@@ -47,6 +47,10 @@ function App() {
       console.log("error caught in checkout function: ", err);
     }
   }
+
+  function addToCart(lineItem){
+    setCart([...cart,lineItem]);
+  }
   
   return (
     <div className="App">
@@ -54,7 +58,7 @@ function App() {
       <Route path='/' element={<HomePage user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
       <Route path="/logout" element={<LogoutPage/>}/>
-      <Route path='/canvas' element={<CanvasPage user={userState}/>}/>
+      <Route path='/canvas' element={<CanvasPage addToCart={addToCart} user={userState}/>}/>
       <Route path='/saved' element={<SavedPage user={userState}/>}/>
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>

@@ -1,18 +1,16 @@
 
 import React, { useState } from 'react';
 import './CanvasPage.css';
-import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import * as api from '../../api/apiBarrel.mjs';
 import * as Components from '../../components/componentBarrel.mjs';
 
 export default function CanvasPage(props) {
   const { NavResponsive, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal } = Components;
-  const location = useLocation();
   const [availableColors, setAvailableColors] = useState([]);
   const [availableCases, setAvailableCases] = useState([]);
-  const [caseModel, setCaseModel] = useState(null);
-  const [caseColor, setCaseColor] = useState("white");
+  const [caseModel, setCaseModel] = useState({});
+  const [caseColor, setCaseColor] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
 
   async function fetchColorsFromDb() {
@@ -36,12 +34,20 @@ export default function CanvasPage(props) {
 
   useEffect(() => {
     fetchCaseModelsFromDb();
+    fetchColorsFromDb();
   }, [])
 
   useEffect(() => {
-    setCaseModel(availableCases[0])
-    fetchColorsFromDb();
+    if(availableCases.length>0){
+      setCaseModel(availableCases[0]);
+    }   
   }, [availableCases])
+
+  useEffect(() => {
+    if(availableColors.length>0){
+      setCaseColor(availableColors[0]);
+    }    
+  }, [availableColors])
 
   return (
     <div>
@@ -52,7 +58,7 @@ export default function CanvasPage(props) {
         <div className='canvas-middle-container'>
           <PhonePreview caseColor={caseColor.hex} />
           <div className='add-save-btns'>
-            <CanvasBtn handleClick={setModalOpen} className='addToCart-btn' text='Add to cart' />
+            <CanvasBtn handleClick={()=>{props.addToCart({price:caseModel.priceId,quantity:1, color:caseColor._id})}} className='addToCart-btn' text='Add to cart' />
             <CanvasBtn handleClick={saveDesign /*needs to add openModal */} className='save-btn' text='Save' />
           </div>
         </div>

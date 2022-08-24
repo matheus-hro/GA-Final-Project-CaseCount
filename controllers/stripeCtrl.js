@@ -3,7 +3,6 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2020-08-27",
   appInfo: {
-    // For sample support and debugging, not required for production:
     name: "ga-case-count",
     version: "0.0.1",
   },
@@ -31,11 +30,13 @@ async function index(req, res) {
 }
 
 async function initiateCheckout(req, res) {
+  const mongodbArray = req.body
+  const stripeLineItems = structuredClone(req.body);
+  stripeLineItems.forEach((e)=> delete e.color)
   const domainURL = process.env.DOMAIN;
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    line_items: req.body,
-    // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
+    line_items: stripeLineItems,
     success_url: `${domainURL}/success.html/{CHECKOUT_SESSION_ID}`,
     cancel_url: `${domainURL}/canceled.html`,
     automatic_tax: {enabled: true},
