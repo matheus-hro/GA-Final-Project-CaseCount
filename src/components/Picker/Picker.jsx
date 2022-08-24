@@ -7,9 +7,9 @@ const CanvasBtn = Components.CanvasBtn;
 export default function Picker(props) {
   
   const colors = props.colors;
-  const selectedColor = props.selectedColor
+  const caseColor = props.caseColor
   const patterns = props.patterns
-  const selectedPattern = props.selectedPattern
+  const casePattern = props.casePattern
   return (
     <article className='pickers-panel'>
        <h4 className='picker-title'>Colors</h4>
@@ -19,7 +19,7 @@ export default function Picker(props) {
           <div 
              className="box"
              style={{backgroundColor: color.hex,
-               boxShadow: selectedColor.hex === color.hex ? "0 0 5px 000" : ""
+               boxShadow: caseColor.hex === color.hex ? "0 0 5px 000" : ""
               }}
              
              onClick={() => props.setCaseColor(color)}>
@@ -34,9 +34,8 @@ export default function Picker(props) {
         <div key={index} className='picker-card'>
           <div 
              className="box"
-             style={{backgroundImage: `url(${pattern})`,
-              
-              //  boxShadow: selectedPattern === pattern ? "0 0 5px 000" : ""
+             style={{backgroundImage: `url(${pattern})`
+              //  boxShadow: casePattern === pattern ? "0 0 5px 000" : ""
               }}
              
              onClick={() => props.setCasePattern(pattern)}>

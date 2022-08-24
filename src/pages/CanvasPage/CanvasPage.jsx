@@ -57,9 +57,9 @@ export default function CanvasPage(props) {
       <NavResponsive user={props.user} />
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <div className=' wrap canvas-main'>
-        <Picker colors={availableColors} setCaseColor={setCaseColor} selectedColor={caseColor} patterns={availablePatterns} selectedPattern={casePattern} setCasePattern={setCasePattern}/>
+        <Picker colors={availableColors} caseColor={caseColor} setCaseColor={setCaseColor} patterns={availablePatterns} casePattern={casePattern} setCasePattern={setCasePattern}/>
         <div className='canvas-middle-container'>
-          <PhonePreview caseColor={caseColor.hex} casePattern={casePattern.svg} />
+          <PhonePreview caseColor={caseColor.hex} casePattern={casePattern} />
           <div className='add-save-btns'>
             <CanvasBtn handleClick={setModalOpen} className='addToCart-btn' text='Add to cart' />
             <CanvasBtn handleClick={saveDesign /*needs to add openModal */} className='save-btn' text='Save' />
