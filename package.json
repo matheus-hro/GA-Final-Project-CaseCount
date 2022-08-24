@@ -24,7 +24,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "serve-favicon": "^2.5.0",
-    "stripe": "^10.3.0",
+    "stripe": "^10.4.0",
     "use-shopping-cart": "^3.1.2",
     "web-vitals": "^2.1.4"
   },
@@ -51,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-top-level-await": "^7.14.5"
   }
 }

@@ -6,12 +6,14 @@ import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import LogoutPage from './pages/LogoutPage/LogoutPage.jsx';
 import CanvasPage from './pages/CanvasPage/CanvasPage';
 import SavedPage from './pages/SavedPage/SavedPage';
+import {loadStripe} from '@stripe/stripe-js'
 
 
 
 function App() {
 
   const [userState, setUserState] = useState(null)
+  const [cart, setCart] = useState([{price:'price_1LZPuZDmNZgLC2UAud2vqNPj', quantity:3}])
   const location = useLocation()
   
   useEffect(() => {
@@ -28,6 +30,23 @@ function App() {
       setUserState(null)
     }
   }, [location]);
+
+  async function checkout(){
+    try{
+      const stripe = await loadStripe('pk_test_51LZHdxDmNZgLC2UAJNMlxqj13FmaIAQ7z1BgFGUbK3lLvJWucHmzJpHhfYoVKgHf6tdki5c2YX4z1GZ5rRiUDlmr00kHu59c0G');
+      let checkoutResponse = await fetch("stripe/checkout", {
+        method: "POST",
+        referrerPolicy: "origin",
+        headers: { "Content-Type": "application/json" },
+        body: cart
+      });
+      if (!checkoutResponse.ok) throw new Error("Fetch failed - Bad request");
+      const session = await checkoutResponse.json();
+      return stripe.redirectToCheckout({sessionId:session.id});    
+    }catch(err){
+      console.log("error caught in checkout function: ", err);
+    }
+  }
   
   return (
     <div className="App">
@@ -39,6 +58,7 @@ function App() {
       <Route path='/saved' element={<SavedPage user={userState}/>}/>
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
+      <button onClick={checkout}>Checkout</button>
     </div>
   );
 }

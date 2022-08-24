@@ -32,25 +32,15 @@ async function index(req, res) {
 
 async function initiateCheckout(req, res) {
   const domainURL = process.env.DOMAIN;
-  console.log(req.query)
-  const { price, quantity } = req.query;
-  console.log(price, quantity)
-
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    line_items: [
-      {
-        price: "price_".concat(price),
-        quantity: quantity,
-      },
-    ],
+    line_items: req.body,
     // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
     success_url: `${domainURL}/success.html/{CHECKOUT_SESSION_ID}`,
     cancel_url: `${domainURL}/canceled.html`,
     automatic_tax: {enabled: true},
   });
-
-  return res.redirect(303, session.url);
+  return res.status(200).json(session);
 }
 
 async function checkoutStatus(req, res) {}

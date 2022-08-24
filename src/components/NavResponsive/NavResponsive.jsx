@@ -4,7 +4,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import logoImg from "./ccountLogo.png";
 
+import { useEffect } from "react";
+
 export default function NavResponsive(props) {
+  
+
   return (
     <nav>
       <div className="wrap">
@@ -26,7 +30,7 @@ export default function NavResponsive(props) {
               
               <Nav.Link href="/saved">saved</Nav.Link>
               <Nav.Link href="/cart">cart</Nav.Link>
-              <form action='stripe/checkout?price=1LZPuZDmNZgLC2UAud2vqNPj&quantity=3' method='POST'><button>Checkout</button></form>
+              
             </Nav>
           </Navbar.Collapse>
         </Navbar>
