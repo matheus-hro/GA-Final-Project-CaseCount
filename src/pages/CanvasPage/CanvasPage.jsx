@@ -7,6 +7,7 @@ import aztec from '../../svgs/aztec.svg';
 import bubbles from '../../svgs/bubbles.svg';
 import circSq from '../../svgs/circles-and-squares.svg';
 import circuitB from '../../svgs/circuitboard.svg';
+import Loader from '../../components/Loader/Loader.jsx'
 
 export default function CanvasPage(props) {
   const [caseModel, setCaseModel] = useState({});
@@ -66,6 +67,7 @@ export default function CanvasPage(props) {
     <div>
       <NavResponsive user={props.user} />
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
+      <Loader />
       <div className=' wrap canvas-main'>
         <Picker colors={availableColors} caseColor={caseColor} setCaseColor={setCaseColor} availablePatterns={availablePatterns} casePattern={casePattern} setCasePattern={setCasePattern} />
         <div className='canvas-middle-container'>

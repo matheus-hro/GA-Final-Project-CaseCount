@@ -7,5 +7,6 @@ import Picker from './Picker/Picker.jsx';
 import SignupForm from './SignupForm/SignupForm.jsx';
 import Navbar from "./Navbar/Navbar.jsx";
 import NavResponsive from "./NavResponsive/NavResponsive.jsx";
+import Loader from "./Loader/Loader.jsx"
 
-export {CanvasBtn, LoginForm, Modal, PhoneDropDown, PhonePreview, Picker, SignupForm, Navbar, NavResponsive};
+export {CanvasBtn, LoginForm, Modal, PhoneDropDown, PhonePreview, Picker, SignupForm, Navbar, NavResponsive, Loader };

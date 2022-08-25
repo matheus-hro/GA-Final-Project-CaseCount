@@ -19,6 +19,7 @@ function App() {
   const [availableCases, setAvailableCases] = useState([]);
   //caseObj = {productId, name, phoneManufacturer, phoneMode, type, displayPrice, imgUrl, price}
   const location = useLocation()
+  const [modalOpen, setModalOpen] = useState(false);
 
   async function fetchCaseModelsFromDb() {
     const caseModels = await api.CaseModel.index();
@@ -80,6 +81,7 @@ function App() {
   
   return (
     <div className="App">
+       {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <Routes >
       <Route path='/' element={<HomePage user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
