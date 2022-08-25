@@ -17,7 +17,7 @@ export default function Modal(props) {
           >
             &times;
           </button>
-          <div>
+          <div id="modal-img">
             <img src={iPhone} alt="" />
           </div>
           <p>iPhone Case $24</p>
