@@ -17,7 +17,7 @@ async function checkIfStripeProdExists(prodId){
 
 const userDesignSchema = new Schema ({
     user: {type: Schema.Types.ObjectId , ref: 'User', required: [true, 'A design must belong to a user!']},
-    productId: {type: String, validate:{validator:checkIfStripeProdExists}, required: [true, 'A design must have a case model!']},
+    productId: {type: String, validate:{validator:checkIfStripeProdExists}, required: [true, 'A design must have a productId!']},
     color: {type: Schema.Types.ObjectId , ref: 'Color', required: [true, 'A design must have a color!']},
     pattern: {type: Schema.Types.ObjectId , ref: 'Pattern'},
 },
