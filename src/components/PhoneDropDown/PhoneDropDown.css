@@ -2,8 +2,11 @@
   padding-bottom: 30vh;
 }
 
-#dropdown-basic {
+#dropdown-basic-button {
   font-family: 'Hind' !important;
+  background-color: #1A072A !important;
+}
+.btn-dark {
   background-color: #1A072A !important;
 }
 

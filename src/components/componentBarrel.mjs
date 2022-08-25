@@ -8,4 +8,5 @@ import SignupForm from './SignupForm/SignupForm.jsx';
 import Navbar from "./Navbar/Navbar.jsx";
 import NavResponsive from "./NavResponsive/NavResponsive.jsx";
 
-export {CanvasBtn, LoginForm, Modal, PhoneDropDown, PhonePreview, Picker, SignupForm, Navbar, NavResponsive};
+
+export {CanvasBtn, LoginForm, Modal, PhoneDropDown, PhonePreview, Picker, SignupForm, Navbar, NavResponsive, };

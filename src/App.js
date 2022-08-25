@@ -6,14 +6,14 @@ import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import LogoutPage from './pages/LogoutPage/LogoutPage.jsx';
 import CanvasPage from './pages/CanvasPage/CanvasPage';
 import SavedPage from './pages/SavedPage/SavedPage';
-
+import Modal from './components/Modal/Modal'
 
 
 function App() {
 
   const [userState, setUserState] = useState(null)
   const location = useLocation()
-  
+  const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     let token = localStorage.getItem('token');
     if (token) {
@@ -31,6 +31,7 @@ function App() {
   
   return (
     <div className="App">
+       {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <Routes >
       <Route path='/' element={<HomePage user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
