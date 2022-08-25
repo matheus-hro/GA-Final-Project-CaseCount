@@ -13,6 +13,7 @@ import * as Components from './components/componentBarrel.mjs';
 
 
 function App() {
+  const { Modal } = Components;
   const [userState, setUserState] = useState(null)
   const [cart, setCart] = useState([])
   //lineItem schema = {productId, price, quantity, color, pattern(optional)}

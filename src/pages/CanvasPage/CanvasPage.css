@@ -18,3 +18,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.phone-preview {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.add-save-btns {
+  align-self: center;
+}
