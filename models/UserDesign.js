@@ -1,12 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const retrieveStripeProduct = require('../controllers/stripeCtrl.js').retrieveProduct;
+
+async function checkIfStripeProdExists(prodId){
+    try{
+        const stripeLookUp = await retrieveStripeProduct(prodId);
+        if(stripeLookUp){
+            return true;
+        }
+        return false;
+    }catch(err){
+        console.log("error when calling stripe controller function");
+        return false;
+    }
+}
 
 const userDesignSchema = new Schema ({
     user: {type: Schema.Types.ObjectId , ref: 'User', required: [true, 'A design must belong to a user!']},
-    caseModel: {type: Schema.Types.ObjectId, ref: 'CaseModel', required: [true, 'A design must have a case model!']},
+    productId: {type: String, validate:{validator:checkIfStripeProdExists}, required: [true, 'A design must have a case model!']},
     color: {type: Schema.Types.ObjectId , ref: 'Color', required: [true, 'A design must have a color!']},
     pattern: {type: Schema.Types.ObjectId , ref: 'Pattern'},
-    //quantity: {type: Schema.Types.Number, min: 0, max:9 , required: [true, 'Please enter a quantity between 0 and 9!']},
 },
 {
     timestamps: true,

@@ -7,14 +7,23 @@ import LogoutPage from './pages/LogoutPage/LogoutPage.jsx';
 import CanvasPage from './pages/CanvasPage/CanvasPage';
 import SavedPage from './pages/SavedPage/SavedPage';
 import {loadStripe} from '@stripe/stripe-js'
+import * as api from './api/apiBarrel.mjs';
+import * as Components from './components/componentBarrel.mjs';
 
 
 
 function App() {
-
   const [userState, setUserState] = useState(null)
   const [cart, setCart] = useState([])
+  //lineItem schema = {productId, price, quantity, color, pattern(optional)}
+  const [availableCases, setAvailableCases] = useState([]);
+  //caseObj = {productId, name, phoneManufacturer, phoneMode, type, displayPrice, imgUrl, price}
   const location = useLocation()
+
+  async function fetchCaseModelsFromDb() {
+    const caseModels = await api.CaseModel.index();
+    setAvailableCases(caseModels);
+  }
   
   useEffect(() => {
     let token = localStorage.getItem('token');
@@ -48,9 +57,26 @@ function App() {
     }
   }
 
-  function addToCart(lineItem){
-    setCart([...cart,lineItem]);
+  function isItemInCart(e){
+    if(e.productId===this.productId && e.price===this.price && e.color===this.color && e.pattern===this.pattern){
+      return true;
+    }return false;
   }
+  function addToCart(lineItem){
+    const itemInCart = cart.findIndex(isItemInCart,lineItem)
+    if(itemInCart===-1){
+      lineItem = {...lineItem, quantity:1}
+      setCart([...cart,lineItem]);
+    }else{
+      let newCart = structuredClone(cart);
+      newCart[itemInCart].quantity++;
+      setCart(newCart);
+    }
+  }
+
+  useEffect(() => {
+    fetchCaseModelsFromDb();
+  }, [])
   
   return (
     <div className="App">
@@ -58,10 +84,11 @@ function App() {
       <Route path='/' element={<HomePage user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
       <Route path="/logout" element={<LogoutPage/>}/>
-      <Route path='/canvas' element={<CanvasPage addToCart={addToCart} user={userState}/>}/>
-      <Route path='/saved' element={<SavedPage user={userState}/>}/>
+      <Route path='/canvas' element={<CanvasPage availableCases={availableCases} setAvailableCases={setAvailableCases} addToCart={addToCart} user={userState}/>}/>
+      <Route path='/saved' element={<SavedPage availableCases={availableCases} user={userState} addToCart={addToCart}   />}/>
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
+      
       <button onClick={checkout}>Checkout</button>
     </div>
   );

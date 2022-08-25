@@ -1,4 +1,5 @@
 const UserDesign = require('../models/UserDesign.js');
+const retrieveStripeProduct = require('./stripeCtrl.js').retrieveProduct;
 
 module.exports = {
     create,
@@ -18,9 +19,9 @@ async function create (req, res) {
 
 async function index (req, res) {
     let user = req.user;
-    let userDesigns = [];
     try {
-        userDesigns = await UserDesign.find({user:user._id}).populate('caseModel').populate('color').exec();
+        let userDesigns = await UserDesign.find({user:user._id}).populate('color').exec();
+        userDesigns = 
         res.status(200).json(userDesigns);
     } catch(err) {
         console.log("error in userdesign index controller is: ", err)

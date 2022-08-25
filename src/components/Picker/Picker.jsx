@@ -8,21 +8,20 @@ export default function Picker(props) {
   
   const colors = props.colors;
   const caseColor = props.caseColor
-  const patterns = props.patterns
-  const casePattern = props.casePattern
+  const availablePatterns = props.availablePatterns
   return (
     <article className='pickers-panel'>
        <h4 className='picker-title'>Colors</h4>
     <div className='picker-container'>
-       {colors.map((color,index) => (
-        <div key={index} className='picker-card'>
+       {colors.map((e,i) => (
+        <div key={i} className='picker-card'>
           <div 
              className="box"
-             style={{backgroundColor: color.hex,
-               boxShadow: caseColor.hex === color.hex ? "0 0 5px 000" : ""
+             style={{backgroundColor: e.hex,
+               boxShadow: caseColor.hex === e.hex ? "0 0 5px 000" : ""
               }}
              
-             onClick={() => props.setCaseColor(color)}>
+             onClick={() => props.setCaseColor(e)}>
             
           </div>
         </div>
@@ -30,15 +29,15 @@ export default function Picker(props) {
     </div>
     <h4 className='picker-title'>Patterns</h4>
     <div className='picker-container'>
-       {patterns.map((pattern,index) => (
-        <div key={index} className='picker-card'>
+       {availablePatterns.map((e,i) => (
+        <div key={i} className='picker-card'>
           <div 
              className="box"
-             style={{backgroundImage: `url(${pattern})`
+             style={{backgroundImage: `url(${e})`
               //  boxShadow: casePattern === pattern ? "0 0 5px 000" : ""
               }}
              
-             onClick={() => props.setCasePattern(pattern)}>
+             onClick={() => props.setCasePattern(e)}>
             
           </div>
         </div>
