@@ -56,7 +56,7 @@ export default function CanvasPage(props) {
     <div>
       <NavResponsive user={props.user} />
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
-     
+      <Loader />
       <div className=' wrap canvas-main'>
         <Picker colors={availableColors} caseColor={caseColor} setCaseColor={setCaseColor} patterns={availablePatterns} casePattern={casePattern} setCasePattern={setCasePattern}/>
         <div className='canvas-middle-container'>
