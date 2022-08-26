@@ -34,3 +34,6 @@ form button {
 .activeTab {
   border-bottom: 5px solid #1A072A;
 }
+label span {
+  align-self: baseline;
+}
