@@ -18,7 +18,7 @@ export default function HomePage(props){
        
       </article>
       <article className='wrap phone-gallery'>
-        <NavLink to='/canvas'>
+        <NavLink className="phone-link" to='/canvas'>
           <div className='phone-container'>
             <div>
               <img className="phone-img" src="./images/iphone12.png" alt="" />
@@ -26,7 +26,7 @@ export default function HomePage(props){
             <h4>iPhone</h4>
           </div>
         </NavLink>
-        <NavLink to='/canvas'>
+        <NavLink className="phone-link" to='/canvas'>
           <div className='phone-container'>
             <div>
               <img className="phone-img" src="./images/pixel4a.png" alt="" />
