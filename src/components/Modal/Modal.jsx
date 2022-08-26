@@ -16,20 +16,24 @@ export default function Modal(props) {
           >
             &times;
           </button>
-          {!cart.lineItems.length ? "Your cart is empty!" : 
-            (cart.lineItems.map((e,i)=>(
-              <div key={i}>
-                <p>{e.liname}</p>
-                <p>Color: {e.color.name}</p>
-                {e.patternName ?  <p>Pattern: {e.patternName} </p> : null}
+          {cart.lineItems.map((e,i)=>(
+            <div key={i}>
+              <h5>{e.name}</h5>
+              <p>Color: {e.color.name}</p>
+              {e.patternName ?  <p>Pattern: {e.patternName} </p> : null}
+              <div className="quantity-container">
+                <CanvasBtn className="quantity-btn" text="-" handleClick={()=>props.removeFromCart(i)}/>
                 <p>Quantity:{e.quantity}</p>
-                <p>${(e.displayPrice * e.quantity).toFixed(2)}</p>
-                <CanvasBtn text="-" handleClick={()=>props.removeFromCart(i)}/>
-                <CanvasBtn text="+" handleClick={()=>props.addToCart(e)}/>
+                <CanvasBtn className="quantity-btn" text="+" handleClick={()=>props.addToCart(e)}/>
               </div>
-            )))
-          }
-          <p>Total:${cart.subtotal}</p>
+              
+              <h6 className="total-price">Total: {e.displayPrice * e.quantity}</h6>
+              
+              
+            </div>
+          ))}
+        <CanvasBtn className="addToCart-btn" text="Checkout" handleClick={props.checkout}/>
+        <p>Total:${cart.subtotal}</p>
         </div>
         <div className="modal-cta">
         </div>

@@ -101,7 +101,7 @@ function App() {
   
   return (
     <div className="App">
-       {modalOpen && <Modal cart={cart} availableCases={availableCases} addToCart={addToCart} removeFromCart={removeFromCart} setModalOpen={setModalOpen} />}
+       {modalOpen && <Modal cart={cart} availableCases={availableCases} addToCart={addToCart} checkout={checkout} removeFromCart={removeFromCart} setModalOpen={setModalOpen} />}
       <Routes >
       <Route path='/'  element={<HomePage setModalOpen={setModalOpen} availableCases={availableCases} user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
@@ -110,8 +110,6 @@ function App() {
       <Route path='/saved'  element={<SavedPage setModalOpen={setModalOpen} availableCases={availableCases} user={userState} addToCart={addToCart}   />}/>
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
-      
-      <button onClick={checkout}>Checkout</button>
     </div>
   );
 }
