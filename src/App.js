@@ -47,6 +47,15 @@ function App() {
     setCart(newCart);
   }
 
+  function checkout(){
+    if(!cart.lineItems.length){
+      alert("Your cart is empty!")
+    }else{
+      api.stripe.checkout(cart.lineItems);
+      setCart({lineItems:[],subtotal:0});
+    }
+  }
+
   return (
     <div className="App">
       {modalOpen && (
@@ -54,10 +63,7 @@ function App() {
           cart={cart}
           availableCases={availableCases}
           addToCart={addToCartCb}
-          checkout={()=>{
-            api.stripe.checkout(cart.lineItems);
-            setCart({lineItems:[],subtotal:0});
-          }}
+          checkout={checkout}
           removeFromCart={removeFromCartCb}
           setModalOpen={setModalOpen}
         />
