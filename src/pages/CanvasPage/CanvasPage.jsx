@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import './CanvasPage.css';
 import * as api from '../../api/apiBarrel.mjs';
-import { Picker, PhonePreview, PhoneDropDown, CanvasBtn, Loader }  from '../../components/componentBarrel.mjs';
-import availablePatterns from '../../svgs/patterns.js'
+import { Picker, PhonePreview, PhoneDropDown, CanvasBtn, Loader } from '../../components/componentBarrel.mjs';
+import availablePatterns from '../../svgs/patterns.mjs'
 
 export default function CanvasPage(props) {
   const [isBusy, setBusy] = useState(true);
@@ -56,12 +56,12 @@ export default function CanvasPage(props) {
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
-  function randomize(){
-    const rndmColorIndex = getRandomInt(0, availableColors.length-1);
-    const rndmPatternIndex = getRandomInt(0, availablePatterns.size-1);
+  function randomize() {
+    const rndmColorIndex = getRandomInt(0, availableColors.length - 1);
+    const rndmPatternIndex = getRandomInt(0, availablePatterns.size - 1);
     const rndmPattern = Array.from(availablePatterns)[rndmPatternIndex];
     setCaseColor(availableColors[rndmColorIndex]);
-    setCasePattern({name:rndmPattern[0],svg:rndmPattern[1]});
+    setCasePattern({ name: rndmPattern[0], svg: rndmPattern[1] });
   }
 
   return (
