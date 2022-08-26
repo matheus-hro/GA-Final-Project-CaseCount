@@ -48,8 +48,8 @@ export default function SavedPage(props) {
                   backgroundImage: `url(${availablePatterns.get(e.patternName)})`,
                   backgroundRepeat: 'repeat'}} alt="" />
               </div>
-              <h4>{e.name}</h4>
-              <h4>{e.displayPrice}</h4>
+              <p className="product-title">{e.name}</p>
+              <h4 className="product-price">{e.displayPrice}</h4>
               <CanvasBtn className='addToCart-btn' text='Add to cart' 
                 handleClick={() => props.addToCart({
                 productId: e.productId,

@@ -15,3 +15,10 @@
 .savedPhone-img {
   width: 50%;
 }
+.product-title {
+  font-size: 18px;
+  font-family: 'Hind', sans-serif;
+}
+.product-price {
+  font-size: 24px;
+}

@@ -15,6 +15,8 @@ img {
 .navlink {
   color: #1A072A !important;
   text-decoration: none;
+  align-self: center;
+  margin-right: 24px;
 }
 .navlink .active {
   color: #1A072A !important;
@@ -36,5 +38,7 @@ img {
 }
 
 span {
-  padding-top: 10px;
+  /* padding-top: 10px; */
+  align-self: center;
+  margin-right: 24px;
 }
