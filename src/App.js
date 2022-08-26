@@ -72,20 +72,30 @@ function App() {
         return true;
       }return false;
     }
-    const itemInCart = cart.findIndex(isItemInCart,lineItem)
-    if(itemInCart===-1){
+    const itemIndex = cart.findIndex(isItemInCart,lineItem)
+    if(itemIndex===-1){
       lineItem = {...lineItem, quantity:1}
       setCart([...cart,lineItem]);
     }else{
       let newCart = structuredClone(cart);
-      newCart[itemInCart].quantity++;
+      newCart[itemIndex].quantity++;
       setCart(newCart);
     }
+  }
+
+  function removeFromCart(itemIndex){
+    let newCart = structuredClone(cart);
+    if(newCart[itemIndex].quantity<=1){
+      newCart.splice(itemIndex, 1);
+    }else{
+      newCart[itemIndex].quantity--;
+    }
+    setCart(newCart);
   }
   
   return (
     <div className="App">
-       {modalOpen && <Modal cart={cart} availableCases={availableCases} setModalOpen={setModalOpen} />}
+       {modalOpen && <Modal cart={cart} availableCases={availableCases} addToCart={addToCart} removeFromCart={removeFromCart} setModalOpen={setModalOpen} />}
       <Routes >
       <Route path='/'  element={<HomePage setModalOpen={setModalOpen} availableCases={availableCases} user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>

@@ -17,17 +17,19 @@ export default function Modal(props) {
           >
             &times;
           </button>
-          {cart.map((e,i)=>(
-            <div key={i}>
-              <p>{e.name}</p>
-              <p>Color: {e.color.name}</p>
-              {e.patternName ?  <p>Pattern: {e.patternName} </p> : null}
-              <p>Quantity:{e.quantity}</p>
-              <p>Total: {e.displayPrice * e.quantity}</p>
-              <CanvasBtn text="-"/>
-              <CanvasBtn text="+"/>
-            </div>
-          ))}
+          {!cart.length ? "Your cart is empty!" : 
+            (cart.map((e,i)=>(
+              <div key={i}>
+                <p>{e.name}</p>
+                <p>Color: {e.color.name}</p>
+                {e.patternName ?  <p>Pattern: {e.patternName} </p> : null}
+                <p>Quantity:{e.quantity}</p>
+                <p>Total: ${(e.displayPrice * e.quantity).toFixed(2)}</p>
+                <CanvasBtn text="-" handleClick={()=>props.removeFromCart(i)}/>
+                <CanvasBtn text="+" handleClick={()=>props.addToCart(e)}/>
+              </div>
+            )))
+          }
         </div>
         <div className="modal-cta">
         </div>

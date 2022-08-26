@@ -6,7 +6,7 @@ export default function CanvasBtn(props){
   return (
     <button 
       className={btnClass}
-      onClick={() => props.handleClick(true)}
+      onClick={props.handleClick}
       >{props.text}
     </button>
   )
