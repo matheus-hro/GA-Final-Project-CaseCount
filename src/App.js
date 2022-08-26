@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import * as api from "./api/apiBarrel.mjs";
 import { Modal, NavResponsive } from "./components/componentBarrel.mjs";
-import { CanvasPage, HomePage, LoginPage, LogoutPage, SavedPage } from "./pages/pageBarrel.mjs";
+import { CanvasPage, HomePage, LoginPage, LogoutPage, SavedPage, SuccessPage } from "./pages/pageBarrel.mjs";
 import {addToCart, removeFromCart} from "./cart/cart.mjs"
 
 function App() {
@@ -12,15 +12,6 @@ function App() {
   const [availableCases, setAvailableCases] = useState([]);
   const location = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
-
-  useEffect(() => {
-    fetchCaseModelsFromDb();
-  }, []);
-
-  async function fetchCaseModelsFromDb() {
-    const caseModels = await api.CaseModel.index();
-    setAvailableCases(caseModels);
-  }
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -36,6 +27,15 @@ function App() {
       setUserState(false);
     }
   }, [location]);
+  
+  useEffect(() => {
+    fetchCaseModelsFromDb();
+  }, []);
+
+  async function fetchCaseModelsFromDb() {
+    const caseModels = await api.CaseModel.index();
+    setAvailableCases(caseModels);
+  }
 
   function addToCartCb(lineItem){
     const newCart = addToCart(cart, lineItem);
@@ -54,7 +54,10 @@ function App() {
           cart={cart}
           availableCases={availableCases}
           addToCart={addToCartCb}
-          checkout={()=>api.stripe.checkout(cart.lineItems)}
+          checkout={()=>{
+            api.stripe.checkout(cart.lineItems);
+            setCart({lineItems:[],subtotal:0});
+          }}
           removeFromCart={removeFromCartCb}
           setModalOpen={setModalOpen}
         />
@@ -99,6 +102,19 @@ function App() {
                 availableCases={availableCases}
                 user={userState}
                 addToCart={addToCartCb}
+              />
+            </>
+          }
+        />
+
+        <Route
+          path="/sucess/:orderid"
+          element={
+            <>
+              <NavResponsive setModalOpen={setModalOpen} user={userState} />
+              <SuccessPage
+                user={userState}
+                setCart={setCart}
               />
             </>
           }

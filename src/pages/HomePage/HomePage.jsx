@@ -8,7 +8,7 @@ export default function HomePage(props) {
       <article className="phone-gallery">
         <div className="intro-content">
           <h1 className="intro-title">Custom Cases</h1>
-          <p>Choose between differnt colors, prints, and styles of cases.</p>
+          <p>Choose between different colors, prints, and styles of cases.</p>
           <div className="phone-link-container">
             <NavLink className="phone-link" to="/canvas">
             CUSTOMIZE YOUR CASE

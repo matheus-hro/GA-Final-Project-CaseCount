@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SavedPage.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import * as api from '../../api/apiBarrel.mjs';
 import  { CanvasBtn } from '../../components/componentBarrel.mjs';
 import availablePatterns from '../../svgs/patterns.js'
@@ -9,6 +9,11 @@ export default function SavedPage(props) {
   const [savedDesigns, setSavedDesigns] = useState([]);
   const availableCases = props.availableCases;
   const user = props.user;
+  let imgRef = useRef([])
+
+  useEffect(() => {
+      fetchSavedDesignsFromDb();
+  }, [user, availableCases])
 
   async function fetchSavedDesignsFromDb() {
     let userDesigns = await api.UserDesign.index();
@@ -27,9 +32,10 @@ export default function SavedPage(props) {
     setSavedDesigns(userDesigns);
   }
 
-  useEffect(() => {
-      fetchSavedDesignsFromDb();
-  }, [user, availableCases])
+  useEffect(()=>{
+    imgRef.current = imgRef.current.slice(0, savedDesigns.length);
+    console.log(imgRef)
+  },[savedDesigns])
 
   async function deleteDesign(id){
     const successful = await api.UserDesign.destroy(id);
@@ -49,10 +55,16 @@ export default function SavedPage(props) {
           {savedDesigns.map((e, i) => (
             <div key={i} className="savedPhone-container">
               <div className="savedPhone-img">
-                <img src={e.imgUrl} style={{
-                  backgroundColor: e.color.hex,
-                  backgroundImage: `url(${availablePatterns.get(e.patternName)})`,
-                  backgroundRepeat: 'repeat'}} alt="" />
+                <img 
+                  alt=""
+                  ref={el => imgRef.current[i] = el} 
+                  src={e.imgUrl} 
+                  style={{
+                    backgroundColor: e.color.hex,
+                    backgroundImage: `url(${availablePatterns.get(e.patternName)})`,
+                    backgroundRepeat: 'repeat'
+                  }}
+                />
               </div>
               <p className="product-title">{e.name}</p>
               <h4 className="product-price">${e.displayPrice}</h4>

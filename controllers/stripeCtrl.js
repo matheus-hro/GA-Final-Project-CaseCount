@@ -47,7 +47,7 @@ async function initiateCheckout(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: stripeLineItems,
-      success_url: `${domainURL}/success.html/{CHECKOUT_SESSION_ID}`,
+      success_url: `${domainURL}/success/`,
       cancel_url: `${domainURL}/`,
       automatic_tax: { enabled: true },
     });
