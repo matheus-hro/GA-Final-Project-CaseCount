@@ -24,14 +24,14 @@ export default function CanvasPage(props) {
       setAvailableColors(colors);
     }
     fetchColorsFromDb();
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (availableColors.length > 0 && availableCases.length > 0) {
       setCaseModel(availableCases[0]);
       setCaseColor(availableColors[0]);
     }
-  }, [availableColors, availableCases])
+  }, [availableColors, availableCases]);
 
   async function saveDesign() {
     if (props.user) {
@@ -46,7 +46,7 @@ export default function CanvasPage(props) {
         alert("Sorry, try again.")
       }
     } else {
-      alert("Sign up to save your designs!")
+      alert("Sign up to save your designs!");
     }
   }
 
@@ -80,8 +80,11 @@ export default function CanvasPage(props) {
               }}
             />
 
-            <CanvasBtn className='save-btn' text='Save'
-              handleClick={saveDesign} />
+            <CanvasBtn
+              className="save-btn"
+              text="Save"
+              handleClick={saveDesign}
+            />
           </div>
         </div>
         <div>
@@ -93,6 +96,5 @@ export default function CanvasPage(props) {
         </div>
       </div>
     </div>
-  )
-
+  );
 }

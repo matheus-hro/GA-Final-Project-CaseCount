@@ -11,7 +11,7 @@ function addToCart(cart, lineItem) {
     }
 
     let { lineItems, subtotal } = { ...cart };
-    const itemIndex = cart.lineItems.findIndex(isItemInCart, lineItem);
+    const itemIndex = lineItems.findIndex(isItemInCart, lineItem);
     if (itemIndex === -1) {
       lineItem = { ...lineItem, quantity: 1 };
       lineItems.push(lineItem);

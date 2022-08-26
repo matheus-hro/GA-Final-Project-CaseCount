@@ -1,12 +1,12 @@
 
 .intro-content {
   font-family: 'Hind', sans-serif;
-  text-align: center;
+  /* text-align: center; */
   padding-top: 40px;
 }
 .intro-title, .phone-container h4 {
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .wrap {
@@ -18,5 +18,35 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 50%;
+  justify-content: end;
+  /* width: 50%; */
+}
+.phone-link {
+  text-decoration: none !important;
+    color: #1A072A;
+    cursor: pointer;
+    background-color: #F4DB26;
+    font-weight: 700;
+    padding: 8px 32px;
+    border-radius: 8px;
+    font-size: 24px;
+}
+.phone-link:hover {
+  color:#F4DB26 !important;
+  background-color:#1A072A ;
+  cursor: pointer;
+}
+.phone-link h4 {
+  font-size: 24px;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-right: 50px;
+  padding-left:50px;
+}
+.phone-link-container {
+  margin-top: 40px;
 }

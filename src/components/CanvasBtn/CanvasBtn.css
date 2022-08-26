@@ -1,6 +1,8 @@
 .canvas-btn {
   border: none;
   font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
   cursor: pointer;
   outline: inherit;
   padding: 8px 20px;

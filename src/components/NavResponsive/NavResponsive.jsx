@@ -21,11 +21,11 @@ export default function NavResponsive(props) {
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav className="me-auto">
-              <NavLink to="/"
+              <NavLink to="/canvas"
                 className={({ isActive }) =>
                   isActive ? activeClassName : inactiveClassName
                 }
-              >cases</NavLink>
+              >Customize!</NavLink>
             </Nav>
 
             <Nav>
@@ -34,21 +34,21 @@ export default function NavResponsive(props) {
                 className={({ isActive }) =>
                   isActive ? activeClassName : inactiveClassName
                 }
-              >log out</NavLink> :
+              >Log out</NavLink> :
                 <NavLink to="/login"
                 className={({ isActive }) =>
                     isActive ? activeClassName : inactiveClassName
                   }
-                >login</NavLink>}
+                >Log in</NavLink>}
 
               <NavLink to="/saved"
                 className={({ isActive }) =>
                   isActive ? activeClassName : inactiveClassName
                 }
-              >saved</NavLink>
+              >Saved designs</NavLink>
               <span onClick={()=>props.setModalOpen(true)}
                 className={inactiveClassName}
-              >cart</span>
+              >Cart</span>
 
             </Nav>
           </Navbar.Collapse>

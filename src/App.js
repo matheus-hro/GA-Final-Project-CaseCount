@@ -83,7 +83,7 @@ function App() {
               <CanvasPage
                 availableCases={availableCases}
                 setAvailableCases={setAvailableCases}
-                addToCart={addToCart}
+                addToCart={addToCartCb}
                 user={userState}
               />
             </>
