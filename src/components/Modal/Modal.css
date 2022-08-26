@@ -35,6 +35,15 @@
   font-size: 52px;
   
 }
-#qty-select {
+/* #qty-select {
   margin-bottom: 20px;
+} */
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.quantity-container p {
+  margin-top: 20px;
 }

@@ -19,13 +19,18 @@ export default function Modal(props) {
           </button>
           {cart.map((e,i)=>(
             <div key={i}>
-              <p>{e.name}</p>
+              <h5>{e.name}</h5>
               <p>Color: {e.color.name}</p>
               {e.patternName ?  <p>Pattern: {e.patternName} </p> : null}
-              <p>Quantity:{e.quantity}</p>
-              <p>Total: {e.displayPrice * e.quantity}</p>
-              <CanvasBtn text="-"/>
-              <CanvasBtn text="+"/>
+              <div className="quantity-container">
+                <CanvasBtn className="quantity-btn" text="-"/>
+                <p>Quantity:{e.quantity}</p>
+                <CanvasBtn className="quantity-btn" text="+"/>
+              </div>
+              
+              <h6 className="total-price">Total: {e.displayPrice * e.quantity}</h6>
+              <CanvasBtn className="addToCart-btn" text="Checkout"/>
+              
             </div>
           ))}
         </div>
