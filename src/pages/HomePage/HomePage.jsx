@@ -16,7 +16,7 @@ export default function HomePage(props) {
           </div>
         </div>
         
-        <div>
+        <div className='phone-img-container'>
           <img className="phone-img" src={homeImg} alt="" />
         </div>
       </article>
