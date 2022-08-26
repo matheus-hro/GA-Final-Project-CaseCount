@@ -22,14 +22,14 @@ export default function Modal(props) {
               <p>{e.name}</p>
               <p>Color: {e.color.name}</p>
               {e.patternName ?  <p>Pattern: {e.patternName} </p> : null}
-             
               <p>Quantity:{e.quantity}</p>
               <p>Total: {e.displayPrice * e.quantity}</p>
+              <CanvasBtn text="-"/>
+              <CanvasBtn text="+"/>
             </div>
           ))}
         </div>
         <div className="modal-cta">
-          <CanvasBtn className="addToCart-btn" text="Add to cart" />
         </div>
       </div>
     </div>
