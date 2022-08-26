@@ -8,6 +8,8 @@ img {
   color: #1A072A;
   /* padding-top: 10px; */
 }
+
+
 .bg-brandYellow {
   background-color: #F4DB26;
   color: #1A072A;
@@ -24,17 +26,15 @@ img {
   color:#99325F !important;
   cursor: pointer;
 }
-.wrap {
-  max-width: 1200px;
+.nav-wrap {
   margin: 0 auto;
 }
 
 .logo-img {
   height: 48px;
   border-radius: 100px;
-  padding-bottom: 8px;
 }
 
 span {
-  padding-top: 10px;
+  padding:10px;
 }

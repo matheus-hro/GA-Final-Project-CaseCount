@@ -1,11 +1,8 @@
 import React from 'react';
 import './PhonePreview.css';
-import { useState, useRef } from 'react';
 
 export default function PhonePreview(props) {
-  const [isBusy, setBusy] = useState(true);
 
- 
   return (
     <article className="phone-preview">
       <div >

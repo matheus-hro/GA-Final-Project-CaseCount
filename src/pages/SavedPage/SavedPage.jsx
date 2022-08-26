@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import './SavedPage.css';
 import { useEffect } from 'react';
 import * as api from '../../api/apiBarrel.mjs';
-import * as Components from '../../components/componentBarrel.mjs';
+import  { CanvasBtn } from '../../components/componentBarrel.mjs';
 import availablePatterns from '../../svgs/patterns.js'
 
 export default function SavedPage(props) {
-  const { NavResponsive, CanvasBtn } = Components;
   const [savedDesigns, setSavedDesigns] = useState([]);
   const availableCases = props.availableCases;
   const user = props.user;
@@ -29,9 +28,7 @@ export default function SavedPage(props) {
   }
 
   useEffect(() => {
-    if(user){
       fetchSavedDesignsFromDb();
-    }
   }, [user, availableCases])
 
   async function deleteDesign(id){
@@ -41,11 +38,9 @@ export default function SavedPage(props) {
     }
     fetchSavedDesignsFromDb()
   }
-
-
+  
   return (
     <div>
-      <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
       <section className='wrap main'>
         <h2>Saved designs</h2>
         {!user ? <p>Log in to see your case designs!</p> :

@@ -1,5 +1,4 @@
 import "./NavResponsive.css";
-
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -12,7 +11,7 @@ export default function NavResponsive(props) {
 
   return (
     <nav>
-      <div className="wrap">
+      <div className="nav-wrap">
         <Navbar bg="brandYellow" variant="" sticky="top" expand="lg">
           <Navbar.Brand>
             <NavLink to="/">

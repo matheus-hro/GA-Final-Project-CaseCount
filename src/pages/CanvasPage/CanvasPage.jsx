@@ -2,11 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import './CanvasPage.css';
 import * as api from '../../api/apiBarrel.mjs';
-import * as Components from '../../components/componentBarrel.mjs';
+import { Picker, PhonePreview, PhoneDropDown, CanvasBtn, Loader }  from '../../components/componentBarrel.mjs';
 import availablePatterns from '../../svgs/patterns.js'
 
 export default function CanvasPage(props) {
-  const { NavResponsive, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal, Loader } = Components;
   const [isBusy, setBusy] = useState(true);
   const [caseModel, setCaseModel] = useState({});
   const [caseColor, setCaseColor] = useState({});
@@ -39,11 +38,11 @@ export default function CanvasPage(props) {
       const successful = await api.UserDesign.create({
         color: caseColor._id,
         productId: caseModel.productId,
-        patternName:casePattern.name
+        patternName: casePattern.name
       });
-      if(successful){
+      if (successful) {
         alert("Design successfully saved!")
-      }else{
+      } else {
         alert("Sorry, try again.")
       }
     } else {
@@ -53,10 +52,9 @@ export default function CanvasPage(props) {
 
   return (
     <div>
-      <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
       {isBusy && <Loader />}
       <div className=' wrap canvas-main'>
-        <Picker 
+        <Picker
           colors={availableColors}
           caseColor={caseColor}
           setCaseColor={setCaseColor}
@@ -73,15 +71,17 @@ export default function CanvasPage(props) {
           />
           <div className='add-save-btns'>
             <CanvasBtn className='addToCart-btn' text='Add to cart'
-            handleClick={() => {props.addToCart({
-              ...caseModel,
-              patternName:casePattern.name,
-              color:caseColor
-            })}}
+              handleClick={() => {
+                props.addToCart({
+                  ...caseModel,
+                  patternName: casePattern.name,
+                  color: caseColor
+                })
+              }}
             />
 
             <CanvasBtn className='save-btn' text='Save'
-            handleClick={saveDesign}  />
+              handleClick={saveDesign} />
           </div>
         </div>
         <div>

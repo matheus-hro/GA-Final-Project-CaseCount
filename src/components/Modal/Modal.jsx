@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./Modal.css";
-import * as Components from "../../components/componentBarrel.mjs";
+import { CanvasBtn } from "../../components/componentBarrel.mjs";
 
 export default function Modal(props) {
-  const { CanvasBtn } = Components;
   const cart = props.cart;
 
   return (
@@ -27,7 +26,7 @@ export default function Modal(props) {
                 <CanvasBtn className="quantity-btn" text="+" handleClick={()=>props.addToCart(e)}/>
               </div>
               
-              <h6 className="total-price">Total: {e.displayPrice * e.quantity}</h6>
+              <h6 className="total-price">Total: {(e.displayPrice * e.quantity).toFixed(2)}</h6>
               
               
             </div>

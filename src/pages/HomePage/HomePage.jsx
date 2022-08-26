@@ -1,21 +1,13 @@
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './HomePage.css'
-import * as Components from '../../components/componentBarrel.mjs';
 
-
-
-
-export default function HomePage(props){
-  const { NavResponsive} = Components;
-
+export default function HomePage(props) {
   return (
     <>
-    <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
-   
-    <article className='intro-content'>
+      <article className='intro-content'>
         <h1 className='intro-title'>Custom Cases</h1>
         <p>Select your phone, start customizing</p>
-       
+
       </article>
       <article className='wrap phone-gallery'>
         <NavLink to='/canvas'>
