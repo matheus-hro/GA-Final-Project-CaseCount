@@ -96,7 +96,7 @@ function App() {
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
       
-      <button onClick={checkout}>Checkout</button>
+      
     </div>
   );
 }
