@@ -51,5 +51,9 @@
   margin-top: 40px;
 }
 .phone-img-container {
-  width: 50%;
+    width: 50%;
+}
+
+.phone-img {
+  height:100%;
 }
