@@ -50,6 +50,20 @@ export default function CanvasPage(props) {
     }
   }
 
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
+
+  function randomize(){
+    const rndmColorIndex = getRandomInt(0, availableColors.length-1);
+    const rndmPatternIndex = getRandomInt(0, availablePatterns.size-1);
+    const rndmPattern = Array.from(availablePatterns)[rndmPatternIndex];
+    setCaseColor(availableColors[rndmColorIndex]);
+    setCasePattern({name:rndmPattern[0],svg:rndmPattern[1]});
+  }
+
   return (
     <div>
       {isBusy && <Loader />}
@@ -61,6 +75,7 @@ export default function CanvasPage(props) {
           availablePatterns={availablePatterns}
           casePattern={casePattern}
           setCasePattern={setCasePattern}
+          randomize={randomize}
         />
         <div className='canvas-middle-container'>
           <PhonePreview
@@ -68,6 +83,13 @@ export default function CanvasPage(props) {
             caseModelImg={caseModel.imgUrl}
             caseColor={caseColor.hex}
             casePattern={casePattern.svg}
+          />
+        </div>
+        <div>
+          <PhoneDropDown
+            setCaseModel={findCaseModelAndSet}
+            availableCases={availableCases}
+            label={`${caseModel.name} - $${caseModel.displayPrice}`}
           />
           <div className='add-save-btns'>
             <CanvasBtn className='addToCart-btn' text='Add to cart'
@@ -86,13 +108,6 @@ export default function CanvasPage(props) {
               handleClick={saveDesign}
             />
           </div>
-        </div>
-        <div>
-          <PhoneDropDown
-            setCaseModel={findCaseModelAndSet}
-            availableCases={availableCases}
-            label={`${caseModel.name} - $${caseModel.displayPrice}`}
-          />
         </div>
       </div>
     </div>

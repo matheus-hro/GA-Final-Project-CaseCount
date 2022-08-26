@@ -57,8 +57,7 @@ export default function Picker(props) {
        {patternArray}
     </div>
     <div className='picker-btns'>
-      <CanvasBtn className='randomize-btn' text='Randomize'/>
-      <CanvasBtn className='reset-btn' text='Reset'/>
+      <CanvasBtn className='randomize-btn' text='Randomize' handleClick={props.randomize}/>
     </div>
     </article>
    
