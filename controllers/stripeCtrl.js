@@ -25,9 +25,6 @@ async function index(req, res) {
     let simplifiedProducts = products.data.map((e) => ({
       productId: e.id,
       name: e.name,
-      phoneManufacturer: e.metadata.phoneManufacturer,
-      phoneModel: e.metadata.phoneModel,
-      type: e.metadata.type,
       imgUrl: e.images[0],
       price: prices.data.find((p) => p.product === e.id).id,
       displayPrice:

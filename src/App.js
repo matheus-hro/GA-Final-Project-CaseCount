@@ -12,10 +12,10 @@ import * as Components from './components/componentBarrel.mjs';
 
 
 function App() {
-  const { Modal, NavResponsive } = Components;
+  const { Modal } = Components;
   const [userState, setUserState] = useState(null)
   const [cart, setCart] = useState([])
-  //lineItem schema for stripe -> {productId, price, quantity, color, patternName(optional)}
+  //lineItem schema for stripe -> {productId, price, quantity, color, displayPrice, patternName(optional)}
   const [availableCases, setAvailableCases] = useState([]);
   //caseObj schema for app -> {productId, name, phoneManufacturer, phoneMode, type, displayPrice, imgUrl, price}
   const location = useLocation()
@@ -66,8 +66,7 @@ function App() {
     function isItemInCart(e){
       if(
         e.productId===this.productId &&
-        e.price===this.price &&
-        e.color===this.color &&
+        e.color._id===this.color._id &&
         e.patternName===this.patternName
       ){
         return true;
@@ -86,7 +85,7 @@ function App() {
   
   return (
     <div className="App">
-       {modalOpen && <Modal cart={cart} setModalOpen={setModalOpen} />}
+       {modalOpen && <Modal cart={cart} availableCases={availableCases} setModalOpen={setModalOpen} />}
       <Routes >
       <Route path='/'  element={<HomePage setModalOpen={setModalOpen} availableCases={availableCases} user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>

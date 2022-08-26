@@ -6,7 +6,7 @@ export default function PhoneDropdown(props) {
 
   return (
     <>
-      Select your phone
+      Select your phone and case
       <DropdownButton
         id="dropdown-basic-button"
         variant="dark"
@@ -15,7 +15,7 @@ export default function PhoneDropdown(props) {
       >
         {availableCases.map((e, i) => (
           <Dropdown.Item key={i} eventKey={e.productId}>
-            {e.phoneModel} {e.type} - ${e.displayPrice}
+            {`${e.name} - $${e.displayPrice}`}
           </Dropdown.Item>
         ))}
       </DropdownButton>

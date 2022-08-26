@@ -8,13 +8,25 @@ export default function Picker(props) {
   const colors = props.colors;
   const caseColor = props.caseColor
   const availablePatterns = props.availablePatterns
-  let patternArray = []
-  availablePatterns.forEach((v,k)=>{
-    patternArray.push(<div key={k} className='picker-card'>
+  const casePattern = props.casePattern
+  let patternArray = [
+    <div key={0} className='picker-card'>
       <div 
           className="box"
-          style={{backgroundImage: `url(${v})`
-          //  boxShadow: casePattern === pattern ? "0 0 5px 000" : ""
+          style={{backgroundImage: "none",
+          boxShadow: casePattern.name === "" ? "0 0 5px 000" : ""
+          }}
+          
+          onClick={() => props.setCasePattern({name:"",svg:""})}>
+      </div>
+    </div>
+  ]
+  availablePatterns.forEach((v,k)=>{
+    patternArray.push(<div key={k+1} className='picker-card'>
+      <div 
+          className="box"
+          style={{backgroundImage: `url(${v})`,
+          boxShadow: casePattern.name === k ? "0 0 5px 000" : ""
           }}
           
           onClick={() => props.setCasePattern({name:k,svg:v})}>

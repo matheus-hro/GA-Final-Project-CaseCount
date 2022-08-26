@@ -14,8 +14,8 @@ export default function CanvasPage(props) {
   const [availableColors, setAvailableColors] = useState([]);
   const availableCases = props.availableCases;
 
-  function findCaseModelAndSet(prodId) {
-    const i = availableCases.findIndex(e => e.productId === prodId);
+  function findCaseModelAndSet(productId) {
+    const i = availableCases.findIndex(e => e.productId === productId);
     setCaseModel(availableCases[i]);
   }
 
@@ -48,7 +48,7 @@ export default function CanvasPage(props) {
 
   return (
     <div>
-      <NavResponsive setOpenModal={props.setModalOpen} user={props.user} />
+      <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
       {isBusy && <Loader />}
       <div className=' wrap canvas-main'>
         <Picker 
@@ -68,14 +68,11 @@ export default function CanvasPage(props) {
           />
           <div className='add-save-btns'>
             <CanvasBtn className='addToCart-btn' text='Add to cart'
-            handleClick={() => {
-              props.addToCart({
-                productId: caseModel.productId,
-                price: caseModel.price,
-                color: caseColor._id,
-                patternName: casePattern.name
-                })
-              }}
+            handleClick={() => {props.addToCart({
+              ...caseModel,
+              patternName:casePattern.name,
+              color:caseColor
+            })}}
             />
 
             <CanvasBtn className='save-btn' text='Save'
@@ -86,7 +83,7 @@ export default function CanvasPage(props) {
           <PhoneDropDown
             setCaseModel={findCaseModelAndSet}
             availableCases={availableCases}
-            label={`${caseModel.phoneModel} ${caseModel.type} $${caseModel.displayPrice}`}
+            label={`${caseModel.name} - $${caseModel.displayPrice}`}
           />
         </div>
       </div>
