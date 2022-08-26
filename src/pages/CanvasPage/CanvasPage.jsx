@@ -1,12 +1,19 @@
-
-import React, { useState, useEffect } from 'react';
-import './CanvasPage.css';
-import * as api from '../../api/apiBarrel.mjs';
-import * as Components from '../../components/componentBarrel.mjs';
-import availablePatterns from '../../svgs/patterns.js'
+import React, { useState, useEffect } from "react";
+import "./CanvasPage.css";
+import * as api from "../../api/apiBarrel.mjs";
+import * as Components from "../../components/componentBarrel.mjs";
+import availablePatterns from "../../svgs/patterns.js";
 
 export default function CanvasPage(props) {
-  const { NavResponsive, Picker, PhonePreview, PhoneDropDown, CanvasBtn, Modal, Loader } = Components;
+  const {
+    NavResponsive,
+    Picker,
+    PhonePreview,
+    PhoneDropDown,
+    CanvasBtn,
+    Modal,
+    Loader,
+  } = Components;
   const [isBusy, setBusy] = useState(true);
   const [caseModel, setCaseModel] = useState({});
   const [caseColor, setCaseColor] = useState({});
@@ -15,7 +22,7 @@ export default function CanvasPage(props) {
   const availableCases = props.availableCases;
 
   function findCaseModelAndSet(prodId) {
-    const i = availableCases.findIndex(e => e.productId === prodId);
+    const i = availableCases.findIndex((e) => e.productId === prodId);
     setCaseModel(availableCases[i]);
   }
 
@@ -25,24 +32,24 @@ export default function CanvasPage(props) {
       setAvailableColors(colors);
     }
     fetchColorsFromDb();
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (availableColors.length > 0 && availableCases.length > 0) {
       setCaseModel(availableCases[0]);
       setCaseColor(availableColors[0]);
     }
-  }, [availableColors, availableCases])
+  }, [availableColors, availableCases]);
 
   async function saveDesign() {
     if (props.user) {
       await api.UserDesign.create({
         color: caseColor._id,
         productId: caseModel.productId,
-        patternName:casePattern.name
+        patternName: casePattern.name,
       });
     } else {
-      alert("Sign up to save your designs!")
+      alert("Sign up to save your designs!");
     }
   }
 
@@ -50,8 +57,8 @@ export default function CanvasPage(props) {
     <div>
       <NavResponsive setOpenModal={props.setModalOpen} user={props.user} />
       {isBusy && <Loader />}
-      <div className=' wrap canvas-main'>
-        <Picker 
+      <div className=" wrap canvas-main">
+        <Picker
           colors={availableColors}
           caseColor={caseColor}
           setCaseColor={setCaseColor}
@@ -59,27 +66,35 @@ export default function CanvasPage(props) {
           casePattern={casePattern}
           setCasePattern={setCasePattern}
         />
-        <div className='canvas-middle-container'>
-          <PhonePreview
-            setBusy={setBusy}
-            caseModelImg={caseModel.imgUrl}
-            caseColor={caseColor.hex}
-            casePattern={casePattern.svg}
-          />
-          <div className='add-save-btns'>
-            <CanvasBtn className='addToCart-btn' text='Add to cart'
-            handleClick={() => {
-              props.addToCart({
-                productId: caseModel.productId,
-                price: caseModel.price,
-                color: caseColor._id,
-                patternName: casePattern.name
-                })
+        <div className="canvas-middle-container">
+          
+            <PhonePreview className="phone-preview"
+              setBusy={setBusy}
+              caseModelImg={caseModel.imgUrl}
+              caseColor={caseColor.hex}
+              casePattern={casePattern.svg}
+            />
+          
+
+          <div className="add-save-btns">
+            <CanvasBtn
+              className="addToCart-btn"
+              text="Add to cart"
+              handleClick={() => {
+                props.addToCart({
+                  productId: caseModel.productId,
+                  price: caseModel.price,
+                  color: caseColor._id,
+                  patternName: casePattern.name,
+                });
               }}
             />
 
-            <CanvasBtn className='save-btn' text='Save'
-            handleClick={saveDesign}  />
+            <CanvasBtn
+              className="save-btn"
+              text="Save"
+              handleClick={saveDesign}
+            />
           </div>
         </div>
         <div>
@@ -91,6 +106,5 @@ export default function CanvasPage(props) {
         </div>
       </div>
     </div>
-  )
-
+  );
 }

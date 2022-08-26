@@ -17,13 +17,12 @@
 .canvas-middle-container {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
+
 .phone-preview {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
+  width: 400px;
 }
 .add-save-btns {
   align-self: center;
