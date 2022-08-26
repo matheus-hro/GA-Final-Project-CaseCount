@@ -6,9 +6,18 @@ export default function PhonePreview(props) {
   return (
     <article className="phone-preview">
       <div >
-        <img onLoad={()=>props.setBusy(false)} style={{backgroundColor:props.caseColor, backgroundImage: `url('${props.casePattern}')`, backgroundRepeat:'repeat'}} src={props.caseModelImg} alt="" />
+        <img
+          src={props.caseModelImg}
+          alt=""
+          onLoad={() => props.setBusy(false)}
+          style={{ 
+            backgroundColor: props.caseColor,
+            backgroundImage: `url('${props.casePattern}')`,
+            backgroundRepeat: 'repeat'
+          }}
+        />
       </div>
-      
+
     </article>
   )
 }
