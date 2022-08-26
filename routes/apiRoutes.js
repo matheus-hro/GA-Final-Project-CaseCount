@@ -15,5 +15,6 @@ router.get('/case-models', caseModelCtrl.index)
 router.use(require('../config/auth.js'));
 router.post('/user-design', userDesignCtrl.create);
 router.get('/user-design', userDesignCtrl.index);
+router.delete('/user-design', userDesignCtrl.destroy);
 
 module.exports = router

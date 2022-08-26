@@ -14,10 +14,10 @@ import * as Components from './components/componentBarrel.mjs';
 function App() {
   const { Modal } = Components;
   const [userState, setUserState] = useState(null)
-  const [cart, setCart] = useState([])
-  //lineItem schema for stripe -> {productId, price, quantity, color, displayPrice, patternName(optional)}
+  const [cart, setCart] = useState({lineItems:[], subtotal:0})
+  //lineItem schema  -> {productId, price, quantity, color{name, hex}, displayPrice, patternName(optional)}
   const [availableCases, setAvailableCases] = useState([]);
-  //caseObj schema for app -> {productId, name, phoneManufacturer, phoneMode, type, displayPrice, imgUrl, price}
+  //caseObj schema for app -> {productId, name, displayPrice, imgUrl, price}
   const location = useLocation()
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -41,7 +41,7 @@ function App() {
         setUserState(payload.user)
       }
     }else{
-      setUserState(null)
+      setUserState(false)
     }
   }, [location]);
 
@@ -52,7 +52,7 @@ function App() {
         method: "POST",
         referrerPolicy: "origin",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(cart)
+        body: JSON.stringify(cart.lineItems)
       });
       
       const session = await checkoutResponse.json();
@@ -72,25 +72,31 @@ function App() {
         return true;
       }return false;
     }
-    const itemIndex = cart.findIndex(isItemInCart,lineItem)
+    let {lineItems, subtotal} = {...cart};
+    const itemIndex = cart.lineItems.findIndex(isItemInCart,lineItem)
     if(itemIndex===-1){
       lineItem = {...lineItem, quantity:1}
-      setCart([...cart,lineItem]);
-    }else{
-      let newCart = structuredClone(cart);
-      newCart[itemIndex].quantity++;
-      setCart(newCart);
+      lineItems.push(lineItem);
+      subtotal +=lineItem.displayPrice;
+
+    }else{    
+      lineItems[itemIndex].quantity++;
+      subtotal += lineItem.displayPrice;
+
     }
+    setCart({lineItems:lineItems, subtotal: (Math.round((subtotal+Number.EPSILON)*100)/100) });
   }
 
   function removeFromCart(itemIndex){
-    let newCart = structuredClone(cart);
-    if(newCart[itemIndex].quantity<=1){
-      newCart.splice(itemIndex, 1);
+    let {lineItems, subtotal} = {...cart};
+    if(lineItems[itemIndex].quantity<=1){
+      subtotal-=lineItems[itemIndex].displayPrice;
+      lineItems.splice(itemIndex, 1);
     }else{
-      newCart[itemIndex].quantity--;
+      subtotal-=lineItems[itemIndex].displayPrice;
+      lineItems[itemIndex].quantity--;
     }
-    setCart(newCart);
+    setCart({lineItems:lineItems, subtotal:(Math.round((subtotal+Number.EPSILON)*100)/100) });
   }
   
   return (

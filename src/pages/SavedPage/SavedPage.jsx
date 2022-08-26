@@ -6,10 +6,10 @@ import * as Components from '../../components/componentBarrel.mjs';
 import availablePatterns from '../../svgs/patterns.js'
 
 export default function SavedPage(props) {
-  const { NavResponsive, Modal, CanvasBtn } = Components;
+  const { NavResponsive, CanvasBtn } = Components;
   const [savedDesigns, setSavedDesigns] = useState([]);
   const availableCases = props.availableCases;
-  const [modalOpen, setModalOpen] = useState(false);
+  const user = props.user;
 
   async function fetchSavedDesignsFromDb() {
     let userDesigns = await api.UserDesign.index();
@@ -29,17 +29,28 @@ export default function SavedPage(props) {
   }
 
   useEffect(() => {
-    fetchSavedDesignsFromDb();
-  }, [availableCases])
+    if(user){
+      fetchSavedDesignsFromDb();
+    }
+  }, [user, availableCases])
+
+  async function deleteDesign(id){
+    const successful = await api.UserDesign.destroy(id);
+    if (!successful){
+      alert("Sorry, try again.")
+    }
+    fetchSavedDesignsFromDb()
+  }
 
 
   return (
     <div>
       <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
       <section className='wrap main'>
-        <h2>Saved</h2>
-        <p>My saved items</p>
-        <article className='saved-main'>
+        <h2>Saved designs</h2>
+        {!user ? <p>Log in to see your case designs!</p> :
+        !savedDesigns.length ? <p>You haven't saved any designs yet!</p> :
+        (<article className='saved-main'>
           {savedDesigns.map((e, i) => (
             <div key={i} className="savedPhone-container">
               <div className="savedPhone-img">
@@ -49,18 +60,20 @@ export default function SavedPage(props) {
                   backgroundRepeat: 'repeat'}} alt="" />
               </div>
               <h4>{e.name}</h4>
-              <h4>{e.displayPrice}</h4>
+              <h4>${e.displayPrice}</h4>
               <CanvasBtn className='addToCart-btn' text='Add to cart' 
-                handleClick={() => props.addToCart({
-                productId: e.productId,
-                price: e.price,
-                color: e.color,
-                patternName: e.patternName
-                })} 
+                handleClick={() => props.addToCart(e)} 
+              />
+              <br/>
+              <CanvasBtn className='addToCart-btn' text='Delete' 
+                handleClick={()=>deleteDesign(e._id)} 
               />
             </div>
           ))}
-        </article>
+        </article>)
+        }
+        
+        
 
       </section>
     </div>

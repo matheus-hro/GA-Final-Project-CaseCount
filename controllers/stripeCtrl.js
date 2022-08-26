@@ -1,4 +1,5 @@
 require("dotenv").config();
+const domainURL = process.env.DOMAIN;
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2020-08-27",
@@ -39,25 +40,23 @@ async function index(req, res) {
 
 async function initiateCheckout(req, res) {
   try {
-    const mongodbArray = req.body;
-    const stripeLineItems = structuredClone(req.body);
-    stripeLineItems.forEach((e) => delete e.color);
-    const domainURL = process.env.DOMAIN;
+    const stripeLineItems = req.body.map((e) => {
+      const { price, quantity } = e;
+      return { price, quantity };
+    });
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: stripeLineItems,
       success_url: `${domainURL}/success.html/{CHECKOUT_SESSION_ID}`,
-      cancel_url: `${domainURL}/canceled.html`,
+      cancel_url: `${domainURL}/`,
       automatic_tax: { enabled: true },
     });
-    if (!session.ok) throw new Error("Fetch failed - Bad request");
     return res.status(200).json(session);
   } catch (err) {
+    console.log("err in checkout: ", err)
     return res.status(400).json("Sorry, try again!");
   }
 }
-
-async function checkoutStatus(req, res) {}
 
 module.exports = {
   index,

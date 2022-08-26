@@ -36,11 +36,16 @@ export default function CanvasPage(props) {
 
   async function saveDesign() {
     if (props.user) {
-      await api.UserDesign.create({
+      const successful = await api.UserDesign.create({
         color: caseColor._id,
         productId: caseModel.productId,
         patternName:casePattern.name
       });
+      if(successful){
+        alert("Design successfully saved!")
+      }else{
+        alert("Sorry, try again.")
+      }
     } else {
       alert("Sign up to save your designs!")
     }

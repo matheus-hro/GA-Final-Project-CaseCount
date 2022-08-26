@@ -16,7 +16,7 @@ export default function LoginForm (props) {
       let isLoggedIn = await api.User.login(user);
       if (isLoggedIn){
         setStatusMessage("Signed in!");
-        navigate(-1, {replace: true});
+        navigate(-1);
       }else{
         setStatusMessage("Failed! Please try again.")
       }
