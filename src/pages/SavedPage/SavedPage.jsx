@@ -48,7 +48,7 @@ export default function SavedPage(props) {
   return (
     <div>
       <section className='wrap main'>
-        <h2>Saved designs</h2>
+        <h2 className="saved-title">Saved designs</h2>
         {!user ? <p>Log in to see your case designs!</p> :
         !savedDesigns.length ? <p>You haven't saved any designs yet!</p> :
         (<article className='saved-main'>

@@ -10,7 +10,7 @@ export default function NavResponsive(props) {
 
 
   return (
-    <nav>
+    <nav className="nav-container">
       <div className="nav-wrap">
         <Navbar bg="brandYellow" variant="" sticky="top" expand="lg">
           <Navbar.Brand>

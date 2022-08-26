@@ -30,9 +30,12 @@ img {
 }
 .nav-wrap {
   margin: 0 auto;
-  
+  max-width: 1200px;
 }
+.nav-container {
+  background-color: #F4DB26;
 
+}
 .logo-img {
   height: 48px;
   border-radius: 100px;
