@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
-import {Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import {Route, Routes, Navigate, useLocation, useRouteMatch} from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import LogoutPage from './pages/LogoutPage/LogoutPage.jsx';
@@ -11,16 +11,19 @@ import * as api from './api/apiBarrel.mjs';
 import * as Components from './components/componentBarrel.mjs';
 
 
-
 function App() {
-  const { Modal } = Components;
+  const { Modal, NavResponsive } = Components;
   const [userState, setUserState] = useState(null)
   const [cart, setCart] = useState([])
-  //lineItem schema = {productId, price, quantity, color, pattern(optional)}
+  //lineItem schema for stripe -> {productId, price, quantity, color, patternName(optional)}
   const [availableCases, setAvailableCases] = useState([]);
-  //caseObj = {productId, name, phoneManufacturer, phoneMode, type, displayPrice, imgUrl, price}
+  //caseObj schema for app -> {productId, name, phoneManufacturer, phoneMode, type, displayPrice, imgUrl, price}
   const location = useLocation()
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    fetchCaseModelsFromDb();
+  }, [])
 
   async function fetchCaseModelsFromDb() {
     const caseModels = await api.CaseModel.index();
@@ -59,12 +62,17 @@ function App() {
     }
   }
 
-  function isItemInCart(e){
-    if(e.productId===this.productId && e.price===this.price && e.color===this.color && e.pattern===this.pattern){
-      return true;
-    }return false;
-  }
   function addToCart(lineItem){
+    function isItemInCart(e){
+      if(
+        e.productId===this.productId &&
+        e.price===this.price &&
+        e.color===this.color &&
+        e.patternName===this.patternName
+      ){
+        return true;
+      }return false;
+    }
     const itemInCart = cart.findIndex(isItemInCart,lineItem)
     if(itemInCart===-1){
       lineItem = {...lineItem, quantity:1}
@@ -75,20 +83,16 @@ function App() {
       setCart(newCart);
     }
   }
-
-  useEffect(() => {
-    fetchCaseModelsFromDb();
-  }, [])
   
   return (
     <div className="App">
-       {modalOpen && <Modal setOpenModal={setModalOpen} />}
+       {modalOpen && <Modal cart={cart} setModalOpen={setModalOpen} />}
       <Routes >
-      <Route path='/' element={<HomePage user={userState}/>}/>
+      <Route path='/'  element={<HomePage setModalOpen={setModalOpen} availableCases={availableCases} user={userState}/>}/>
       <Route path='/login'  element={<LoginPage user={userState}/>}/>
       <Route path="/logout" element={<LogoutPage/>}/>
-      <Route path='/canvas' element={<CanvasPage availableCases={availableCases} setAvailableCases={setAvailableCases} addToCart={addToCart} user={userState}/>}/>
-      <Route path='/saved' element={<SavedPage availableCases={availableCases} user={userState} addToCart={addToCart}   />}/>
+      <Route path='/canvas'  element={<CanvasPage setModalOpen={setModalOpen} availableCases={availableCases} setAvailableCases={setAvailableCases} addToCart={addToCart} user={userState}/>}/>
+      <Route path='/saved'  element={<SavedPage setModalOpen={setModalOpen} availableCases={availableCases} user={userState} addToCart={addToCart}   />}/>
       <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
       

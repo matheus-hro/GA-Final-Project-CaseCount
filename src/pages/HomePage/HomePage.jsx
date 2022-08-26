@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import './HomePage.css'
 import * as Components from '../../components/componentBarrel.mjs';
 
@@ -10,7 +10,7 @@ export default function HomePage(props){
 
   return (
     <>
-    <NavResponsive user={props.user} />
+    <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
    
     <article className='intro-content'>
         <h1 className='intro-title'>Custom Cases</h1>
@@ -18,22 +18,22 @@ export default function HomePage(props){
        
       </article>
       <article className='wrap phone-gallery'>
-        <Link to='/canvas' state={{phone:'iphone'}}>
+        <NavLink to='/canvas'>
           <div className='phone-container'>
             <div>
               <img className="phone-img" src="./images/iphone12.png" alt="" />
             </div>
             <h4>iPhone</h4>
           </div>
-        </Link>
-        <Link to='/canvas' state={{phone:'pixel'}}>
+        </NavLink>
+        <NavLink to='/canvas'>
           <div className='phone-container'>
             <div>
               <img className="phone-img" src="./images/pixel4a.png" alt="" />
             </div>
             <h4>Pixel 4</h4>
           </div>
-        </Link>
+        </NavLink>
       </article>
     </>
   )

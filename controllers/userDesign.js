@@ -20,8 +20,7 @@ async function create (req, res) {
 async function index (req, res) {
     let user = req.user;
     try {
-        let userDesigns = await UserDesign.find({user:user._id}).populate('color').exec();
-        userDesigns = 
+        const userDesigns = await UserDesign.find({user:user._id}).populate('color').exec();
         res.status(200).json(userDesigns);
     } catch(err) {
         console.log("error in userdesign index controller is: ", err)

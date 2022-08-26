@@ -12,12 +12,17 @@ img {
   background-color: #F4DB26;
   color: #1A072A;
 }
-a.nav-link {
+.navlink {
   color: #1A072A !important;
-  
+  text-decoration: none;
 }
-.nav-link:hover {
+.navlink .active {
+  color: #1A072A !important;
+  text-decoration: underline;
+}
+.navlink:hover {
   color:#99325F !important;
+  cursor: pointer;
 }
 .wrap {
   max-width: 1200px;

@@ -3,29 +3,28 @@ import './SavedPage.css';
 import { useEffect } from 'react';
 import * as api from '../../api/apiBarrel.mjs';
 import * as Components from '../../components/componentBarrel.mjs';
-import phoneImg from './testPhone.png';
-
-
+import availablePatterns from '../../svgs/patterns.js'
 
 export default function SavedPage(props) {
   const { NavResponsive, Modal, CanvasBtn } = Components;
   const [savedDesigns, setSavedDesigns] = useState([]);
-  const image = phoneImg;
   const availableCases = props.availableCases;
-  // temporary array to map through:
   const [modalOpen, setModalOpen] = useState(false);
 
   async function fetchSavedDesignsFromDb() {
     let userDesigns = await api.UserDesign.index();
-    console.log("userDesigns from db: ", userDesigns)
-    console.log("available cases: ", availableCases)
     userDesigns = userDesigns.map((e, i) => {
       const caseModel = availableCases.find(f => e.productId === f.productId)
       if (caseModel === undefined) { return undefined }
-      return {...e, name:caseModel.name, price:caseModel.price, displayPrice:caseModel.displayPrice, imgUrl:caseModel.imgUrl};
+      return {
+        ...e, 
+        name: caseModel.name,
+        price: caseModel.price,
+        displayPrice: caseModel.displayPrice,
+        imgUrl: caseModel.imgUrl
+      };
     })
     userDesigns = userDesigns.filter(e => e !== undefined)
-    console.log(userDesigns)
     setSavedDesigns(userDesigns);
   }
 
@@ -36,8 +35,7 @@ export default function SavedPage(props) {
 
   return (
     <div>
-      <NavResponsive user={props.user} />
-      {modalOpen && <Modal setOpenModal={setModalOpen} />}
+      <NavResponsive setModalOpen={props.setModalOpen} user={props.user} />
       <section className='wrap main'>
         <h2>Saved</h2>
         <p>My saved items</p>
@@ -45,11 +43,21 @@ export default function SavedPage(props) {
           {savedDesigns.map((e, i) => (
             <div key={i} className="savedPhone-container">
               <div className="savedPhone-img">
-                <img src={e.imgUrl} style={{ backgroundColor: e.color.hex }} alt="" />
+                <img src={e.imgUrl} style={{
+                  backgroundColor: e.color.hex,
+                  backgroundImage: `url(${availablePatterns.get(e.patternName)})`,
+                  backgroundRepeat: 'repeat'}} alt="" />
               </div>
               <h4>{e.name}</h4>
               <h4>{e.displayPrice}</h4>
-              <CanvasBtn handleClick={()=>props.addToCart({productId:e.productId,price:e.price,color:e.color,pattern:e.pattern })} className='addToCart-btn' text='Add to cart' />
+              <CanvasBtn className='addToCart-btn' text='Add to cart' 
+                handleClick={() => props.addToCart({
+                productId: e.productId,
+                price: e.price,
+                color: e.color,
+                patternName: e.patternName
+                })} 
+              />
             </div>
           ))}
         </article>

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./Modal.css";
 import * as Components from "../../components/componentBarrel.mjs";
 import Form from "react-bootstrap/Form";
-import iPhone from "./iPhone.png";
 
 export default function Modal(props) {
   const { CanvasBtn } = Components;
+  const cart = props.cart;
+  const availableCases = props.availableCases;
 
   return (
     <div className="modal-overlay">
@@ -13,14 +14,21 @@ export default function Modal(props) {
         <div className="modal-body">
           <button
             className="close-modal-btn"
-            onClick={() => props.setOpenModal(false)}
+            onClick={() => props.setModalOpen(false)}
           >
             &times;
           </button>
-          <div id="modal-img">
-            <img src={iPhone} alt="" />
-          </div>
-          <p>iPhone Case $24</p>
+          {cart.map((e,i)=>(
+            <div key={i}>
+              <p>
+                {availableCases.find((e,i)=>{
+                  return 1
+                })}
+              </p>
+              <p>{e.color.name}</p>
+              <p>{e.displayPrice}</p>
+            </div>
+          ))}
           
           <Form.Select id="qty-select" size="sm" aria-label="Default select example">
             <option>Quantity</option>
