@@ -56,6 +56,16 @@
   width: 80%;
 }
 
-.phone-img {
-  /* height:100vh; */
+/* responsiveness */
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  .phone-gallery {
+    flex-direction: column-reverse;
+    align-items: center;
+
+  }
+  .phone-img-container {
+    width: 100%;
+  }
+
 }

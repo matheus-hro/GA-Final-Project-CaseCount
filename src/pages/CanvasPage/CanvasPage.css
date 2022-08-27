@@ -28,12 +28,19 @@
 
 
 /* responsiveness */
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 425px) and (max-width: 768px) {
   .canvas-main {
     flex-direction: column-reverse;
     align-items: center;
   }
   .add-save-btns {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  
+  .wrap {
+    width: 90%;
   }
 }
