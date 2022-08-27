@@ -68,13 +68,15 @@ export default function SavedPage(props) {
                   </div>
                   <p className="product-title">{e.name}</p>
                   <h4 className="product-price">${e.displayPrice}</h4>
-                  <CanvasBtn className='addToCart-btn' text='Add to cart'
-                    handleClick={() => props.addToCart(e)}
-                  />
-                  <br />
-                  <CanvasBtn className='addToCart-btn' text='Delete'
-                    handleClick={() => deleteDesign(e._id)}
-                  />
+                  <div className='savedPhone-btns-container'>
+                    <CanvasBtn className='addToCart-btn' text='Add to cart'
+                      handleClick={() => props.addToCart(e)}
+                    />
+                    
+                    <CanvasBtn className='save-btn' text='Delete'
+                      handleClick={() => deleteDesign(e._id)}
+                    />
+                  </div>
                 </div>
               ))}
             </article>)

@@ -25,3 +25,8 @@
 .product-price {
   font-size: 24px;
 }
+.savedPhone-btns-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
