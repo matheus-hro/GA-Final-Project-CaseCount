@@ -13,6 +13,7 @@ function App() {
   const location = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
 
+  //check for auth to
   useEffect(() => {
     let token = localStorage.getItem("token");
     if (token) {
