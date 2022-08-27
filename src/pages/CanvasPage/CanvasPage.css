@@ -10,6 +10,7 @@
   gap: 8px;
   align-self: center;
   margin-top: 16px;
+  margin-bottom: 40px;
 }
 .wrap {
   max-width: 1200px;
@@ -24,7 +25,15 @@
 /* .phone-preview {
   width: 400px;
 } */
-.add-save-btns {
-  align-self: center;
-  margin-bottom: 40px;
+
+
+/* responsiveness */
+@media screen and (min-width: 425px) {
+  .canvas-main {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .add-save-btns {
+    justify-content: center;
+  }
 }
