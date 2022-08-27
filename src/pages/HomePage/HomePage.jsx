@@ -6,6 +6,9 @@ export default function HomePage(props) {
   return (
     <>
       <article className="phone-gallery">
+        <div className='phone-img-container'>
+          <img className="phone-img" src={homeImg} alt="" />
+        </div>
         <div className="intro-content">
           <h1 className="intro-title">Custom Cases</h1>
           <p>Choose between different colors, prints, and styles of cases.</p>
@@ -14,10 +17,6 @@ export default function HomePage(props) {
             CUSTOMIZE YOUR CASE
             </NavLink>
           </div>
-        </div>
-        
-        <div className='phone-img-container'>
-          <img className="phone-img" src={homeImg} alt="" />
         </div>
       </article>
     </>
