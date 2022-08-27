@@ -5,8 +5,8 @@ export default function PhoneDropdown(props) {
   const availableCases = props.availableCases;
 
   return (
-    <>
-      Select your phone and case
+    <div className="dropdown-container">
+      <h4 className="picker-title">Select your phone and case</h4>
       <DropdownButton
         id="dropdown-basic-button"
         variant="dark"
@@ -19,7 +19,7 @@ export default function PhoneDropdown(props) {
           </Dropdown.Item>
         ))}
       </DropdownButton>
-    </>
+    </div>
 
   );
 }

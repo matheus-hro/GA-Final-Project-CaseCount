@@ -86,11 +86,6 @@ export default function CanvasPage(props) {
           />
         </div>
         <div>
-          <PhoneDropDown
-            setCaseModel={findCaseModelAndSet}
-            availableCases={availableCases}
-            label={`${caseModel.name} - $${caseModel.displayPrice}`}
-          />
           <div className='add-save-btns'>
             <CanvasBtn className='addToCart-btn' text='Add to cart'
               handleClick={() => {
@@ -108,6 +103,12 @@ export default function CanvasPage(props) {
               handleClick={saveDesign}
             />
           </div>
+          <PhoneDropDown
+            className="phone-dropdown"
+            setCaseModel={findCaseModelAndSet}
+            availableCases={availableCases}
+            label={`${caseModel.name} - $${caseModel.displayPrice}`}
+          />
         </div>
       </div>
     </div>

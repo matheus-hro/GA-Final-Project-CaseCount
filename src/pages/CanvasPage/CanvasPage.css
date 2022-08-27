@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   padding-top: 60px;
+  gap: 20px;
 }
 .add-save-btns {
   display: flex;
@@ -17,13 +18,13 @@
 .canvas-middle-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
-}
-
-
-.phone-preview {
+  /* width: 50%; */
   width: 400px;
 }
+/* .phone-preview {
+  width: 400px;
+} */
 .add-save-btns {
   align-self: center;
+  margin-bottom: 40px;
 }
